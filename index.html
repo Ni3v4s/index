@@ -1,12 +1,232 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Title Here</title>
+    <title>Ruben Nievas - S0undL4b</title>
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎹</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --text-primary: #ffffff;
+            --accent: #666666;
+            --cakewalk-red: #ff3e3e;
+        }
+
+        body {
+            margin: 0; padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: 0.05; pointer-events: none; z-index: 9999;
+        }
+
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 30px;
+            display: flex; justify-content: space-between; box-sizing: border-box;
+            z-index: 100; mix-blend-mode: difference;
+        }
+
+        .lang-selector { display: flex; gap: 10px; font-size: 0.7rem; font-weight: 700; }
+        .lang-btn { cursor: pointer; opacity: 0.5; transition: 0.3s; color: white; border: none; background: none; padding: 0; font-family: 'Inter'; }
+        .lang-btn.active { opacity: 1; border-bottom: 1px solid white; }
+
+        header {
+            position: relative; height: 100vh;
+            display: flex; flex-direction: column; justify-content: center;
+            align-items: center; text-align: center; overflow: hidden;
+        }
+
+        .video-background {
+            position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%;
+            width: auto; height: auto; z-index: -1; transform: translate(-50%, -50%);
+            opacity: 0.4; filter: grayscale(70%); object-fit: cover;
+        }
+
+        .header-content { will-change: opacity; transition: opacity 0.4s ease-out; }
+
+        h1 { font-size: clamp(3rem, 10vw, 8rem); margin: 0; font-weight: 300; letter-spacing: -2px; text-transform: uppercase; }
+        .subtitle { font-family: 'Playfair Display', serif; font-style: italic; color: var(--accent); font-size: 1.5rem; }
+
+        section { padding: 100px 10%; border-bottom: 1px solid #1a1a1a; position: relative; z-index: 2; background: var(--bg-color); }
+
+        .tag {
+            border: 1px solid #333; padding: 8px 18px; font-size: 0.7rem;
+            color: #888; margin: 5px; display: inline-block; transition: 0.3s; cursor: pointer;
+        }
+        .tag:hover { border-color: #fff; color: #fff; background: rgba(255,255,255,0.05); }
+
+        .cv-link { color: var(--text-primary); text-decoration: none; border-bottom: 1px solid #333; transition: 0.3s; }
+        .cv-link:hover { color: var(--cakewalk-red); border-bottom-color: var(--cakewalk-red); }
+
+        .cv-toggle {
+            width: 100%; padding: 30px 0; background: none; border: none; color: #fff;
+            display: flex; justify-content: space-between; cursor: pointer; font-size: 1.2rem;
+            letter-spacing: 2px; font-family: 'Inter', sans-serif;
+            text-align: left;
+        }
+        .cv-content { max-height: 0; overflow: hidden; transition: max-height 0.8s ease-out; background: #080808; }
+        .active .cv-content { max-height: 4000px; }
+        .icon-plus { transition: 0.4s; display: inline-block; }
+        .active .icon-plus { transform: rotate(45deg); }
+
+        .bio-text { font-weight: 300; line-height: 1.8; color: #ccc; max-width: 800px; margin-bottom: 40px; }
+    </style>
 </head>
 <body>
-    <video src="Ushuaia_otonal.mp4" controls></video>
-    <!-- Removed hoverSound.play01.wav reference and playHover function calls -->
+
+    <nav>
+        <div style="font-weight: 700; letter-spacing: 1px;">RUBEN NIEVAS</div>
+        <div class="lang-selector">
+            <button class="lang-btn active" onclick="setLang('es', event)">SPA</button>
+            <button class="lang-btn" onclick="setLang('en', event)">ENG</button>
+            <button class="lang-btn" onclick="setLang('fr', event)">FRA</button>
+        </div>
+    </nav>
+
+    <header>
+        <video autoplay muted loop playsinline class="video-background">
+            <source src="Ushuaia_otonal.mp4" type="video/mp4">
+        </video>
+        <div class="header-content" id="headerText">
+            <h1>S0undL4b</h1>
+            <p class="subtitle" data-lang-es="Diseño Sonoro & Gestión Cultural" 
+               data-lang-en="Sound Design & Cultural Management" 
+               data-lang-fr="Design Sonore et Gestion Culturelle">Diseño Sonoro & Gestión Cultural</p>
+        </div>
+    </header>
+
+    <section id="biografia">
+        <h2 data-lang-es="BIOGRAFÍA / PERFIL" data-lang-en="BIOGRAPHY / PROFILE" data-lang-fr="BIOGRAPHIE / PROFIL" 
+            style="font-weight: 300; color: var(--accent); font-size: 0.9rem; letter-spacing: 4px; margin-bottom: 30px;">BIOGRAFÍA / PERFIL</h2>
+        <div class="bio-text" 
+             data-lang-es="Ruben Nievas es un referente de la música, el diseño sonoro, compositor, docente y gestor cultural desde el 'fin del mundo', Ushuaia. Su carrera se ha desarrollado en esa intersección de la tecnología musical y la identidad fueguina. Colaborador fundacional en el desarrollo de patches para la mítica rgc:audio (Cakewalk Inc.), influyendo en librerías que definieron una era."
+             data-lang-en="Ruben Nievas is a benchmark in music, sound design, and cultural management from the 'end of the world', Ushuaia. His career has flourished at the intersection of music technology and Fuegian identity. A foundational collaborator for the legendary rgc:audio (Cakewalk Inc.), he helped shape the synthesizer libraries that defined an era in digital production."
+             data-lang-fr="Ruben Nievas est une référence de la musique, du design sonore et de la gestion culturelle depuis le « bout du monde », Ushuaia. Sa carrière s'est développée à l'intersection de la technologie musicale et de l'identité de la Terre de Feu. Collaborateur fondateur pour le mythique rgc:audio (Cakewalk Inc.), il a influencé les bibliothèques qui ont défini une ère du son numérique.">
+            Ruben Nievas es un referente de la música, el diseño sonoro, compositor, docente y gestor cultural desde el "fin del mundo", Ushuaia. 
+            Su carrera se ha desarrollado en esa intersección de la tecnología musical y la identidad fueguina. 
+            Colaborador fundacional en el desarrollo de patches para la mítica rgc:audio (Cakewalk Inc.), 
+            quien ha influido en las librerías de sintetizadores que definieron una era.
+        </div>
+    </section>
+
+    <section id="legacy">
+        <h2 data-lang-es="CORE COLLABORATION" data-lang-en="CORE COLLABORATION" data-lang-fr="COLLABORATION PRINCIPALE" 
+            style="font-weight: 300; color: var(--accent); font-size: 0.9rem; letter-spacing: 4px;">CORE COLLABORATION</h2>
+        <div style="margin-top: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+            <div>
+                <h3 style="font-size: 2.5rem; margin: 0;">rgc:audio & <span style="color: var(--cakewalk-red);">Cakewalk</span></h3>
+                <p style="color: var(--accent); font-style: italic;">2002 — 2008</p>
+                <p style="font-weight: 300; line-height: 1.8;" 
+                   data-lang-es="Desarrollo de patches y texturas para z3ta+, Dimension Pro y Rapture. Sus librerías fueron estándares en el ecosistema Cakewalk."
+                   data-lang-en="Patch and texture development for z3ta+, Dimension Pro, and Rapture. His libraries became standards within the Cakewalk ecosystem."
+                   data-lang-fr="Développement de patches et de textures pour z3ta+, Dimension Pro et Rapture. Ses bibliothèques étaient des standards dans l'écosystème Cakewalk.">
+                    Desarrollo de patches y texturas para <strong>z3ta+, Dimension Pro y Rapture</strong>. 
+                    Sus librerías fueron estándares en el ecosistema Cakewalk.
+                </p>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; align-content: center;">
+                <span class="tag">SONIC CHARGE (Synplant)</span>
+                <span class="tag">APPLE</span>
+                <span class="tag">ROLI</span>
+                <span class="tag">IRCAM FRANCIA</span>
+                <span class="tag">SYNTRILLIUM</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="cv-fold">
+        <div class="cv-container">
+            <button class="cv-toggle" onclick="this.parentElement.classList.toggle('active')">
+                <span data-lang-es="CATÁLOGO & TRAYECTORIA COMPLETA" data-lang-en="CATALOGUE & FULL TRAJECTORY" data-lang-fr="CATALOGUE ET TRAJECTOIRE COMPLÈTE">CATÁLOGO & TRAYECTORIA COMPLETA</span>
+                <span class="icon-plus">+</span>
+            </button>
+            <div class="cv-content">
+                <div style="padding: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 50px;">
+                    <div>
+                        <h4 style="color: var(--cakewalk-red); text-transform: uppercase; font-size: 0.8rem; border-bottom: 1px solid #333; padding-bottom: 10px; letter-spacing: 2px;"
+                            data-lang-es="Discografía & Premios" data-lang-en="Discography & Awards" data-lang-fr="Discographie et Prix">Discografía & Premios</h4>
+                        <ul style="list-style: none; padding: 20px 0 0 0; font-size: 0.85rem; line-height: 1.8;">
+                            <li>• 2024: <strong>Imaginario</strong></li>
+                            <li>• 2022: <strong>Tales</strong></li>
+                            <li>• 2020: <strong>Confinement / Dawdled</strong></li>
+                            <li>• 2019: <strong>CircumP0L4r</strong></li>
+                            <li>• 2007: <strong>Antártida</strong></li>
+                            <li style="margin-top: 15px; color: #888;" data-lang-es="Auspicio Cancillería (2002), Bronce MERCOSUR (2001)." data-lang-en="Foreign Ministry Support (2002), MERCOSUR Bronze (2001)." data-lang-fr="Soutien de la Chancellerie (2002), Bronze MERCOSUR (2001).">Auspicio Cancillería (2002), Bronce MERCOSUR (2001).</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--cakewalk-red); text-transform: uppercase; font-size: 0.8rem; border-bottom: 1px solid #333; padding-bottom: 10px; letter-spacing: 2px;"
+                            data-lang-es="Tecnología Musical" data-lang-en="Music Technology" data-lang-fr="Technologie Musicale">Tecnología Musical</h4>
+                        <ul style="list-style: none; padding: 20px 0 0 0; font-size: 0.85rem; line-height: 1.8;">
+                            <li>• Apple (Frankfurt): Logic Pro.</li>
+                            <li>• Yamaha (Japan): Dante/MADI.</li>
+                            <li>• Cakewalk: Beta Tester.</li>
+                            <li>• The MIDI Association: Member.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--cakewalk-red); text-transform: uppercase; font-size: 0.8rem; border-bottom: 1px solid #333; padding-bottom: 10px; letter-spacing: 2px;"
+                            data-lang-es="Gestión & Dirección" data-lang-en="Management & Direction" data-lang-fr="Gestion et Direction">Gestión & Dirección</h4>
+                        <ul style="list-style: none; padding: 20px 0 0 0; font-size: 0.85rem; line-height: 1.8;">
+                            <li data-lang-es="• Director Banda Municipal (2000-03)." data-lang-en="• Municipal Band Director (2000-03)." data-lang-fr="• Directeur de l'orchestre municipal (2000-03).">• Director Banda Municipal (2000-03).</li>
+                            <li data-lang-es="• Dir. Técnica Noche más Larga." data-lang-en="• Technical Dir. Longest Night Festival." data-lang-fr="• Dir. Technique Festival Nuit la plus Longue.">• Dir. Técnica Noche más Larga.</li>
+                            <li data-lang-es="• Conductor Radio Nacional." data-lang-en="• Radio Host National Radio." data-lang-fr="• Animateur Radio Nationale.">• Conductor Radio Nacional.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="padding: 80px 10%; text-align: center; background: #000;">
+        <p style="font-weight: 700; letter-spacing: 2px;">RUBEN NIEVAS</p>
+        <p style="color: var(--accent); font-size: 0.8rem; margin-top: 10px;" 
+           data-lang-es="Sintiendo Ushuaia desde 1982." data-lang-en="Feeling Ushuaia since 1982." data-lang-fr="Ressentir Ushuaia depuis 1982.">Sintiendo Ushuaia desde 1982.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+
+        // MULTI-LANGUAGE ENGINE
+        function setLang(lang, event) {
+            document.querySelectorAll('[data-lang-es]').forEach(el => {
+                el.innerText = el.getAttribute(`data-lang-${lang}`);
+            });
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // SCROLL FADEOUT
+        window.addEventListener('scroll', function() {
+            const headerText = document.getElementById('headerText');
+            let scrollPos = window.scrollY;
+            headerText.style.opacity = scrollPos > 150 ? "0" : "1";
+            headerText.style.pointerEvents = scrollPos > 150 ? "none" : "auto";
+        });
+
+        // AUDIO ENGINE
+        const clicks = [new Audio('clickSound.play 1.wav'), new Audio('clickSound.play 2.wav'), new Audio('clickSound.play 3.wav'), new Audio('clickSound.play 4.wav')];
+
+        function playClick() { 
+            const rnd = clicks[Math.floor(Math.random() * clicks.length)];
+            rnd.currentTime = 0; rnd.volume = 0.3; rnd.play().catch(()=>{}); 
+        }
+
+        document.querySelectorAll('.tag, .cv-toggle, .cv-link, .lang-btn').forEach(el => {
+            el.addEventListener('click', playClick);
+        });
+    </script>
 </body>
 </html>
