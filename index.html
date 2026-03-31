@@ -88,9 +88,9 @@
     <nav>
         <div style="font-weight: 700; letter-spacing: 1px;">RUBEN NIEVAS</div>
         <div class="lang-selector">
-            <button class="lang-btn active" onclick="setLang('es')">SPA</button>
-            <button class="lang-btn" onclick="setLang('en')">ENG</button>
-            <button class="lang-btn" onclick="setLang('fr')">FRA</button>
+            <button class="lang-btn active" onclick="setLang('es', event)">SPA</button>
+            <button class="lang-btn" onclick="setLang('en', event)">ENG</button>
+            <button class="lang-btn" onclick="setLang('fr', event)">FRA</button>
         </div>
     </nav>
 
@@ -200,7 +200,7 @@
         AOS.init();
 
         // MULTI-LANGUAGE ENGINE
-        function setLang(lang) {
+        function setLang(lang, event) {
             document.querySelectorAll('[data-lang-es]').forEach(el => {
                 el.innerText = el.getAttribute(`data-lang-${lang}`);
             });
