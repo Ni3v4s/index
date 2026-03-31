@@ -2,38 +2,49 @@
 (function () {
     'use strict';
 
-    // Preload all sound assets
+    // Preload click sound assets
     const clickSounds = [
         new Audio('clickSound.play 1.wav'),
         new Audio('clickSound.play 2.wav'),
         new Audio('clickSound.play 3.wav'),
         new Audio('clickSound.play 4.wav'),
     ];
-    const hoverSound = new Audio('hoverSound.play01.wav');
-
-    // Lower volume so sounds are subtle
     clickSounds.forEach(s => { s.volume = 0.45; });
-    hoverSound.volume = 0.25;
+
+    // Sound on/off — remember preference, default to off
+    let soundEnabled = localStorage.getItem('soundEnabled') === 'true';
+
+    // Inject the toggle button into the page header
+    function injectToggle() {
+        const header = document.querySelector('header');
+        if (!header) return;
+        const btn = document.createElement('button');
+        btn.id = 'sound-toggle';
+        btn.setAttribute('aria-label', 'Toggle sounds');
+        btn.textContent = soundEnabled ? '🔊' : '🔇';
+        btn.addEventListener('click', function (e) {
+            e.stopPropagation(); // don't also trigger a click sound for this press
+            soundEnabled = !soundEnabled;
+            localStorage.setItem('soundEnabled', soundEnabled);
+            btn.textContent = soundEnabled ? '🔊' : '🔇';
+        });
+        header.appendChild(btn);
+    }
 
     // Play a random click sound on every click of interactive elements
     document.addEventListener('click', function (e) {
+        if (!soundEnabled) return;
         const target = e.target.closest('a, button, input[type="submit"], input[type="button"]');
-        if (!target) return;
+        if (!target || target.id === 'sound-toggle') return;
         const sound = clickSounds[Math.floor(Math.random() * clickSounds.length)];
         sound.currentTime = 0;
         sound.play().catch(() => {}); // ignore autoplay policy errors
     });
 
-    // Play hover sound on links and buttons
-    let hoverThrottle = 0;
-    document.addEventListener('mouseover', function (e) {
-        const target = e.target.closest('a, button');
-        if (!target) return;
-        const now = Date.now();
-        if (now - hoverThrottle < 120) return; // throttle rapid hover triggers
-        hoverThrottle = now;
-        hoverSound.currentTime = 0;
-        hoverSound.play().catch(() => {});
-    });
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', injectToggle);
+    } else {
+        injectToggle();
+    }
 })();
 
