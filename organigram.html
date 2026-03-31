@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organigram — Ni3v4s</title>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #0d0d0d;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ── Header ── */
+        header {
+            background: #1a1a2e;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            border-bottom: 2px solid #2a2a4a;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d4ff, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        header p {
+            margin-top: 0.35rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* ── Toolbar ── */
+        #toolbar {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            padding: 1rem 1.5rem;
+            background: #111;
+            border-bottom: 1px solid #1a1a2e;
+        }
+
+        #toolbar button {
+            background: #1a1a2e;
+            border: 1px solid #2a2a4a;
+            border-radius: 8px;
+            color: #e0e0e0;
+            font-size: 0.85rem;
+            padding: 0.4rem 0.9rem;
+            cursor: pointer;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        #toolbar button:hover {
+            background: #2a2a4a;
+            border-color: #a855f7;
+        }
+
+        /* ── Canvas area ── */
+        #canvas-wrap {
+            flex: 1;
+            overflow: auto;
+            padding: 2rem 1rem 3rem;
+        }
+
+        /* ── Tree styles ── */
+        .tree {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Each level is a horizontal row */
+        .tree-level {
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Connector lines are drawn with CSS on .tree-node-wrap */
+        .tree-node-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            padding: 0 0.75rem;
+        }
+
+        /* Vertical line from node down to children bar */
+        .tree-node-wrap.has-children::after {
+            content: '';
+            display: block;
+            width: 2px;
+            height: 1.5rem;
+            background: #2a2a4a;
+            margin: 0 auto;
+        }
+
+        /* Horizontal bar above child row */
+        .children-bar {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            gap: 0;
+        }
+
+        /* Vertical lines coming down from each child's connector */
+        .children-bar > .tree-node-wrap::before {
+            content: '';
+            display: block;
+            width: 2px;
+            height: 1.5rem;
+            background: #2a2a4a;
+            margin: 0 auto;
+        }
+
+        /* Horizontal connector spanning children */
+        .children-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: calc(50% - var(--half-span, 50%));
+            width: var(--span, 100%);
+            height: 2px;
+            background: #2a2a4a;
+            /* override per element via JS */
+        }
+
+        /* ── Node card ── */
+        .node-card {
+            position: relative;
+            background: #1a1a2e;
+            border: 1px solid #2a2a4a;
+            border-radius: 12px;
+            padding: 0.7rem 1.1rem;
+            min-width: 130px;
+            max-width: 200px;
+            text-align: center;
+            cursor: pointer;
+            user-select: none;
+            transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+        }
+
+        .node-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 12px;
+            border-top: 3px solid var(--accent, #00d4ff);
+        }
+
+        .node-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(0,0,0,0.5);
+            border-color: var(--accent, #00d4ff);
+        }
+
+        .node-card.collapsed {
+            opacity: 0.75;
+        }
+
+        .node-role {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent, #00d4ff);
+            margin-bottom: 0.2rem;
+        }
+
+        .node-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #f0f0f0;
+        }
+
+        .node-sub {
+            font-size: 0.72rem;
+            color: #666;
+            margin-top: 0.15rem;
+        }
+
+        /* Expand/collapse badge */
+        .node-badge {
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent, #00d4ff);
+            color: #0d0d0d;
+            font-size: 0.65rem;
+            font-weight: 700;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+            transition: transform 0.2s;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+        }
+
+        .node-badge:hover {
+            transform: translateX(-50%) scale(1.2);
+        }
+
+        /* Hidden children container */
+        .children-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .children-wrap.hidden {
+            display: none;
+        }
+
+        /* ── Add-node panel ── */
+        #add-panel {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.65);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #add-panel.open {
+            display: flex;
+        }
+
+        #add-form-box {
+            background: #1a1a2e;
+            border: 1px solid #2a2a4a;
+            border-radius: 16px;
+            padding: 2rem;
+            width: min(420px, 90vw);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        #add-form-box h2 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #a855f7;
+        }
+
+        #add-form-box label {
+            font-size: 0.82rem;
+            color: #aaa;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        #add-form-box input,
+        #add-form-box select {
+            background: #0d0d1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 0.55rem 0.85rem;
+            color: #e0e0e0;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        #add-form-box input:focus,
+        #add-form-box select:focus {
+            border-color: #a855f7;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: flex-end;
+            margin-top: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00d4ff, #a855f7);
+            border: none;
+            border-radius: 8px;
+            padding: 0.55rem 1.25rem;
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .btn-primary:hover { opacity: 0.85; }
+
+        .btn-ghost {
+            background: transparent;
+            border: 1px solid #2a2a4a;
+            border-radius: 8px;
+            padding: 0.55rem 1.25rem;
+            color: #aaa;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .btn-ghost:hover { border-color: #a855f7; color: #e0e0e0; }
+
+        /* ── Footer / back link ── */
+        footer {
+            text-align: center;
+            padding: 1.25rem;
+            color: #555;
+            font-size: 0.85rem;
+            border-top: 1px solid #1a1a2e;
+        }
+
+        footer a {
+            color: #555;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        footer a:hover { color: #a855f7; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🌳 Organigram</h1>
+    <p>Interactive org-chart tree — click a node to expand / collapse its children</p>
+</header>
+
+<div id="toolbar">
+    <button id="btn-expand-all">Expand All</button>
+    <button id="btn-collapse-all">Collapse All</button>
+    <button id="btn-add-node">+ Add Node</button>
+    <button id="btn-reset">Reset</button>
+</div>
+
+<div id="canvas-wrap">
+    <div id="tree-root" class="tree"></div>
+</div>
+
+<!-- Add-node modal -->
+<div id="add-panel" role="dialog" aria-modal="true" aria-label="Add a new node">
+    <div id="add-form-box">
+        <h2>Add a Node</h2>
+        <label>
+            Name *
+            <input id="inp-name" type="text" placeholder="e.g. Alice" autocomplete="off" />
+        </label>
+        <label>
+            Role / Title
+            <input id="inp-role" type="text" placeholder="e.g. Engineer" autocomplete="off" />
+        </label>
+        <label>
+            Sub-text
+            <input id="inp-sub" type="text" placeholder="e.g. Team Alpha" autocomplete="off" />
+        </label>
+        <label>
+            Parent node
+            <select id="inp-parent"></select>
+        </label>
+        <div class="form-actions">
+            <button class="btn-ghost" id="btn-cancel">Cancel</button>
+            <button class="btn-primary" id="btn-confirm-add">Add</button>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <a href="index.html">← Back to Portfolio</a>
+</footer>
+
+<script>
+(function () {
+    'use strict';
+
+    /* ── Accent palette ── */
+    const ACCENTS = [
+        '#00d4ff', '#a855f7', '#22d3ee', '#f59e0b',
+        '#34d399', '#f472b6', '#60a5fa', '#fb923c',
+    ];
+
+    /* ── Default tree data ── */
+    const DEFAULT_TREE = {
+        id: 'n1', name: 'Ni3v4s', role: 'Founder', sub: 'Portfolio', accent: 0,
+        children: [
+            {
+                id: 'n2', name: 'Projects', role: 'Division', sub: '', accent: 1,
+                children: [
+                    { id: 'n4', name: 'World Clock', role: 'App', sub: 'clock.html', accent: 2, children: [] },
+                    { id: 'n5', name: 'Organigram', role: 'App', sub: 'organigram.html', accent: 3, children: [] },
+                ],
+            },
+            {
+                id: 'n3', name: 'Contact', role: 'Division', sub: '', accent: 4,
+                children: [
+                    { id: 'n6', name: 'GitHub', role: 'Profile', sub: 'github.com/Ni3v4s', accent: 5, children: [] },
+                ],
+            },
+        ],
+    };
+
+    /* ── State ── */
+    let tree = deepClone(DEFAULT_TREE);
+    let nextId = 10;
+    let addingToParentId = null; // null = use modal's dropdown
+
+    /* ── Helpers ── */
+    function deepClone(o) { return JSON.parse(JSON.stringify(o)); }
+
+    function findNode(root, id) {
+        if (root.id === id) return root;
+        for (const c of root.children) {
+            const found = findNode(c, id);
+            if (found) return found;
+        }
+        return null;
+    }
+
+    function allNodes(root) {
+        const out = [root];
+        for (const c of root.children) out.push(...allNodes(c));
+        return out;
+    }
+
+    /* ── Collapse state ── */
+    const collapsed = new Set();
+
+    /* ── Render ── */
+    const treeRoot = document.getElementById('tree-root');
+
+    function render() {
+        treeRoot.innerHTML = '';
+        renderNode(tree, treeRoot, 0);
+    }
+
+    function renderNode(node, container, depth) {
+        const wrap = document.createElement('div');
+        wrap.className = 'tree-node-wrap';
+        if (node.children.length > 0 && !collapsed.has(node.id)) {
+            wrap.classList.add('has-children');
+        }
+
+        const accent = ACCENTS[node.accent % ACCENTS.length];
+
+        /* Card */
+        const card = document.createElement('div');
+        card.className = 'node-card' + (collapsed.has(node.id) ? ' collapsed' : '');
+        card.style.setProperty('--accent', accent);
+        card.dataset.nodeId = node.id;
+        card.title = 'Click to ' + (collapsed.has(node.id) ? 'expand' : 'collapse');
+        card.innerHTML = `
+            <div class="node-role">${escHtml(node.role || '&nbsp;')}</div>
+            <div class="node-name">${escHtml(node.name)}</div>
+            ${node.sub ? `<div class="node-sub">${escHtml(node.sub)}</div>` : ''}
+        `;
+
+        if (node.children.length > 0) {
+            const badge = document.createElement('div');
+            badge.className = 'node-badge';
+            badge.textContent = collapsed.has(node.id) ? '+' : '−';
+            card.appendChild(badge);
+
+            card.addEventListener('click', () => {
+                if (collapsed.has(node.id)) {
+                    collapsed.delete(node.id);
+                } else {
+                    collapsed.add(node.id);
+                }
+                render();
+            });
+        }
+
+        wrap.appendChild(card);
+
+        /* Children */
+        if (node.children.length > 0 && !collapsed.has(node.id)) {
+            const childWrap = document.createElement('div');
+            childWrap.className = 'children-wrap';
+
+            /* Horizontal connector bar */
+            const bar = document.createElement('div');
+            bar.className = 'children-bar';
+
+            node.children.forEach(child => {
+                renderNode(child, bar, depth + 1);
+            });
+
+            childWrap.appendChild(bar);
+            wrap.appendChild(childWrap);
+        }
+
+        container.appendChild(wrap);
+    }
+
+    function escHtml(s) {
+        return String(s).replace(/[&<>"']/g, m => ({
+            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+        }[m]));
+    }
+
+    /* ── Toolbar ── */
+    document.getElementById('btn-expand-all').addEventListener('click', () => {
+        collapsed.clear();
+        render();
+    });
+
+    document.getElementById('btn-collapse-all').addEventListener('click', () => {
+        allNodes(tree).forEach(n => { if (n.children.length) collapsed.add(n.id); });
+        render();
+    });
+
+    document.getElementById('btn-reset').addEventListener('click', () => {
+        tree = deepClone(DEFAULT_TREE);
+        nextId = 10;
+        collapsed.clear();
+        render();
+    });
+
+    /* ── Add node modal ── */
+    const addPanel   = document.getElementById('add-panel');
+    const inpName    = document.getElementById('inp-name');
+    const inpRole    = document.getElementById('inp-role');
+    const inpSub     = document.getElementById('inp-sub');
+    const inpParent  = document.getElementById('inp-parent');
+
+    function openAddModal(parentId) {
+        /* Populate parent dropdown */
+        inpParent.innerHTML = '';
+        allNodes(tree).forEach(n => {
+            const opt = document.createElement('option');
+            opt.value = n.id;
+            opt.textContent = n.name + (n.role ? ' (' + n.role + ')' : '');
+            if (n.id === parentId) opt.selected = true;
+            inpParent.appendChild(opt);
+        });
+
+        inpName.value = '';
+        inpRole.value = '';
+        inpSub.value  = '';
+        addPanel.classList.add('open');
+        inpName.focus();
+    }
+
+    document.getElementById('btn-add-node').addEventListener('click', () => openAddModal(tree.id));
+    document.getElementById('btn-cancel').addEventListener('click', closeModal);
+    addPanel.addEventListener('click', e => { if (e.target === addPanel) closeModal(); });
+
+    document.getElementById('btn-confirm-add').addEventListener('click', confirmAdd);
+    document.getElementById('add-form-box').addEventListener('keydown', e => {
+        if (e.key === 'Enter') confirmAdd();
+        if (e.key === 'Escape') closeModal();
+    });
+
+    function closeModal() {
+        addPanel.classList.remove('open');
+    }
+
+    function confirmAdd() {
+        const name = inpName.value.trim();
+        if (!name) { inpName.focus(); return; }
+
+        const parentId = inpParent.value;
+        const parent   = findNode(tree, parentId);
+        if (!parent) return;
+
+        const usedAccents = allNodes(tree).map(n => n.accent);
+        let accent = 0;
+        for (let i = 0; i < ACCENTS.length; i++) {
+            if (!usedAccents.includes(i)) { accent = i; break; }
+            accent = (i + 1) % ACCENTS.length;
+        }
+
+        const newNode = {
+            id: 'n' + (nextId++),
+            name,
+            role: inpRole.value.trim(),
+            sub:  inpSub.value.trim(),
+            accent,
+            children: [],
+        };
+
+        parent.children.push(newNode);
+        collapsed.delete(parentId); // make sure parent is expanded
+        closeModal();
+        render();
+    }
+
+    /* ── Init ── */
+    render();
+})();
+</script>
+<script src="script.js"></script>
+</body>
+</html>

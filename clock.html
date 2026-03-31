@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Clock</title>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #0d0d0d;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem 3rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        header h1 {
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            background: linear-gradient(135deg, #00d4ff, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        header p {
+            margin-top: 0.5rem;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Clock grid */
+        #clocks-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.25rem;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        .clock-card {
+            background: #1a1a2e;
+            border: 1px solid #2a2a4a;
+            border-radius: 16px;
+            padding: 1.5rem 1.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .clock-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Coloured accent bar at the top of each card */
+        .clock-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 16px 16px 0 0;
+        }
+
+        .clock-card .tz-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        .clock-card .tz-name {
+            font-size: 1rem;
+            color: #aaa;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .clock-card .time {
+            font-size: clamp(2rem, 5vw, 2.6rem);
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            font-variant-numeric: tabular-nums;
+            color: #f0f0f0;
+            line-height: 1.1;
+            margin-top: 0.25rem;
+            /* smooth digit transition */
+            transition: color 0.1s ease;
+        }
+
+        .clock-card .date {
+            font-size: 0.82rem;
+            color: #666;
+            margin-top: 0.1rem;
+        }
+
+        /* Remove button */
+        .clock-card .btn-remove {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            background: transparent;
+            border: none;
+            color: #444;
+            font-size: 1.1rem;
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.15s;
+            padding: 0.2rem 0.4rem;
+            border-radius: 6px;
+        }
+
+        .clock-card .btn-remove:hover {
+            color: #e74c3c;
+            background: rgba(231, 76, 60, 0.1);
+        }
+
+        /* Add timezone section */
+        #add-tz-section {
+            margin-top: 2.5rem;
+            width: 100%;
+            max-width: 1100px;
+            background: #1a1a2e;
+            border: 1px dashed #2a2a4a;
+            border-radius: 16px;
+            padding: 1.5rem 1.75rem;
+        }
+
+        #add-tz-section h2 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #888;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        #add-tz-form {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        #tz-search {
+            flex: 1;
+            min-width: 220px;
+            background: #0d0d1a;
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 0.65rem 1rem;
+            color: #e0e0e0;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        #tz-search:focus {
+            border-color: #a855f7;
+        }
+
+        #tz-select {
+            flex: 1;
+            min-width: 220px;
+            background: #0d0d1a;
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 0.65rem 1rem;
+            color: #e0e0e0;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+            cursor: pointer;
+        }
+
+        #tz-select:focus {
+            border-color: #a855f7;
+        }
+
+        #add-tz-form button[type="submit"] {
+            background: linear-gradient(135deg, #00d4ff, #a855f7);
+            border: none;
+            border-radius: 10px;
+            padding: 0.65rem 1.5rem;
+            color: #fff;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.1s;
+            white-space: nowrap;
+        }
+
+        #add-tz-form button[type="submit"]:hover {
+            opacity: 0.88;
+            transform: translateY(-1px);
+        }
+
+        #add-error {
+            color: #e74c3c;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        /* Back link */
+        .back-link {
+            margin-top: 2.5rem;
+            font-size: 0.9rem;
+            color: #555;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: #a855f7;
+        }
+
+        /* Responsive tweaks */
+        @media (max-width: 480px) {
+            #add-tz-form {
+                flex-direction: column;
+            }
+
+            #tz-search, #tz-select {
+                min-width: unset;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🌍 World Clock</h1>
+    <p>Current time across the globe — updated every second</p>
+</header>
+
+<div id="clocks-container"></div>
+
+<section id="add-tz-section">
+    <h2>+ Add a Timezone</h2>
+    <form id="add-tz-form">
+        <input type="search" id="tz-search" placeholder="Filter timezones…" autocomplete="off" />
+        <select id="tz-select" aria-label="Select a timezone to add"></select>
+        <button type="submit">Add Clock</button>
+    </form>
+    <p id="add-error">⚠ This timezone is already displayed.</p>
+</section>
+
+<a href="index.html" class="back-link">← Back to Portfolio</a>
+
+<script>
+(function () {
+    'use strict';
+
+    /* ── Accent palette cycling through cards ── */
+    const ACCENTS = [
+        '#00d4ff', '#a855f7', '#22d3ee', '#f59e0b',
+        '#34d399', '#f472b6', '#60a5fa', '#fb923c',
+    ];
+
+    /* ── Default timezones shown on page load ── */
+    const DEFAULTS = [
+        { id: 'UTC',                    label: 'UTC',  name: 'Coordinated Universal Time' },
+        { id: 'America/New_York',       label: 'EST',  name: 'Eastern Time — New York'    },
+        { id: 'America/Los_Angeles',    label: 'PST',  name: 'Pacific Time — Los Angeles' },
+        { id: 'Europe/Paris',           label: 'CET',  name: 'Central European — Paris'   },
+        { id: 'Asia/Tokyo',             label: 'JST',  name: 'Japan Standard — Tokyo'     },
+        { id: 'America/Sao_Paulo',      label: 'BRT',  name: 'Brasilia Time — São Paulo'  },
+    ];
+
+    /* ── Label generation ── */
+    // Well-known mappings for common IANA timezone IDs to standard abbreviations
+    const TZ_ABBREVIATIONS = {
+        'UTC': 'UTC', 'Etc/UTC': 'UTC', 'Etc/GMT': 'GMT',
+        'America/New_York': 'EST', 'America/Chicago': 'CST',
+        'America/Denver': 'MST', 'America/Los_Angeles': 'PST',
+        'America/Anchorage': 'AKST', 'Pacific/Honolulu': 'HST',
+        'America/Phoenix': 'MST', 'America/Toronto': 'EST',
+        'America/Vancouver': 'PST', 'America/Halifax': 'AST',
+        'America/Sao_Paulo': 'BRT', 'America/Buenos_Aires': 'ART',
+        'America/Argentina/Buenos_Aires': 'ART', 'America/Santiago': 'CLT',
+        'America/Bogota': 'COT', 'America/Mexico_City': 'CST',
+        'Europe/London': 'GMT', 'Europe/Paris': 'CET',
+        'Europe/Berlin': 'CET', 'Europe/Rome': 'CET',
+        'Europe/Madrid': 'CET', 'Europe/Amsterdam': 'CET',
+        'Europe/Brussels': 'CET', 'Europe/Vienna': 'CET',
+        'Europe/Warsaw': 'CET', 'Europe/Prague': 'CET',
+        'Europe/Budapest': 'CET', 'Europe/Zurich': 'CET',
+        'Europe/Stockholm': 'CET', 'Europe/Oslo': 'CET',
+        'Europe/Copenhagen': 'CET', 'Europe/Helsinki': 'EET',
+        'Europe/Athens': 'EET', 'Europe/Kyiv': 'EET',
+        'Europe/Istanbul': 'TRT', 'Europe/Moscow': 'MSK',
+        'Europe/Dublin': 'GMT', 'Europe/Lisbon': 'WET',
+        'Asia/Tokyo': 'JST', 'Asia/Seoul': 'KST',
+        'Asia/Shanghai': 'CST', 'Asia/Hong_Kong': 'HKT',
+        'Asia/Singapore': 'SGT', 'Asia/Taipei': 'CST',
+        'Asia/Manila': 'PHT', 'Asia/Kuala_Lumpur': 'MYT',
+        'Asia/Bangkok': 'ICT', 'Asia/Jakarta': 'WIB',
+        'Asia/Kolkata': 'IST', 'Asia/Colombo': 'SLST',
+        'Asia/Karachi': 'PKT', 'Asia/Tehran': 'IRST',
+        'Asia/Dubai': 'GST', 'Asia/Riyadh': 'AST',
+        'Australia/Sydney': 'AEDT', 'Australia/Melbourne': 'AEDT',
+        'Australia/Perth': 'AWST', 'Pacific/Auckland': 'NZST',
+        'Pacific/Fiji': 'FJT', 'Africa/Cairo': 'EET',
+        'Africa/Johannesburg': 'SAST', 'Africa/Lagos': 'WAT',
+        'Africa/Nairobi': 'EAT',
+    };
+
+    function generateLabel(tzId) {
+        if (TZ_ABBREVIATIONS[tzId]) return TZ_ABBREVIATIONS[tzId];
+        // Fall back to the city portion, abbreviated to 3 characters
+        const city = tzId.split('/').pop().replace(/_/g, ' ');
+        return city.length <= 4 ? city.toUpperCase() : city.substring(0, 3).toUpperCase();
+    }
+
+    /* ── State ── */
+    let active = [];          // array of { id, label, name, accentIndex }
+    let accentCounter = 0;
+
+    /* ── Helpers ── */
+    function formatTime(date, tzId) {
+        return new Intl.DateTimeFormat('en-GB', {
+            timeZone: tzId,
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: false,
+        }).format(date);
+    }
+
+    function formatDate(date, tzId) {
+        return new Intl.DateTimeFormat('en-GB', {
+            timeZone: tzId,
+            weekday: 'short',
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+        }).format(date);
+    }
+
+    /* ── DOM helpers ── */
+    const container = document.getElementById('clocks-container');
+
+    function createCard(tz) {
+        const card = document.createElement('article');
+        card.className = 'clock-card';
+        card.dataset.tzId = tz.id;
+        card.style.setProperty('--accent', ACCENTS[tz.accentIndex % ACCENTS.length]);
+
+        card.innerHTML = `
+            <button class="btn-remove" title="Remove this clock" aria-label="Remove ${tz.label} clock">✕</button>
+            <span class="tz-label">${escapeHtml(tz.label)}</span>
+            <span class="tz-name">${escapeHtml(tz.name)}</span>
+            <div class="time" aria-live="polite" aria-atomic="true">--:--:--</div>
+            <div class="date"></div>
+        `;
+
+        card.querySelector('.btn-remove').addEventListener('click', () => removeClock(tz.id));
+        container.appendChild(card);
+    }
+
+    function escapeHtml(str) {
+        return str.replace(/[&<>"']/g, m => ({
+            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+        }[m]));
+    }
+
+    function addClock(tz) {
+        if (active.some(a => a.id === tz.id)) return false;
+        const entry = { ...tz, accentIndex: accentCounter++ };
+        active.push(entry);
+        createCard(entry);
+        tick(); // update immediately so no blank flash
+        return true;
+    }
+
+    function removeClock(tzId) {
+        active = active.filter(a => a.id !== tzId);
+        const card = container.querySelector(`[data-tz-id="${CSS.escape(tzId)}"]`);
+        if (card) {
+            card.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+            card.style.opacity = '0';
+            card.style.transform = 'scale(0.95)';
+            setTimeout(() => card.remove(), 260);
+        }
+    }
+
+    /* ── Tick ── */
+    function tick() {
+        const now = new Date();
+        active.forEach(tz => {
+            const card = container.querySelector(`[data-tz-id="${CSS.escape(tz.id)}"]`);
+            if (!card) return;
+            card.querySelector('.time').textContent = formatTime(now, tz.id);
+            card.querySelector('.date').textContent = formatDate(now, tz.id);
+        });
+    }
+
+    /* ── Populate timezone <select> ── */
+    const tzSearch  = document.getElementById('tz-search');
+    const tzSelect  = document.getElementById('tz-select');
+    const addError  = document.getElementById('add-error');
+
+    // Get all IANA timezone IDs available in this browser
+    function getAllTimezones() {
+        // Intl.supportedValuesOf is available in modern browsers
+        try {
+            return Intl.supportedValuesOf('timeZone');
+        } catch {
+            // Fallback list for older browsers
+            return [
+                'Africa/Abidjan','Africa/Cairo','Africa/Johannesburg','Africa/Lagos',
+                'Africa/Nairobi','America/Anchorage','America/Argentina/Buenos_Aires',
+                'America/Bogota','America/Chicago','America/Denver','America/Halifax',
+                'America/Los_Angeles','America/Mexico_City','America/New_York',
+                'America/Phoenix','America/Santiago','America/Sao_Paulo','America/Toronto',
+                'America/Vancouver','Asia/Bangkok','Asia/Colombo','Asia/Dubai',
+                'Asia/Hong_Kong','Asia/Jakarta','Asia/Karachi','Asia/Kolkata',
+                'Asia/Kuala_Lumpur','Asia/Manila','Asia/Seoul','Asia/Shanghai',
+                'Asia/Singapore','Asia/Taipei','Asia/Tehran','Asia/Tokyo',
+                'Australia/Melbourne','Australia/Perth','Australia/Sydney',
+                'Europe/Amsterdam','Europe/Athens','Europe/Berlin','Europe/Brussels',
+                'Europe/Budapest','Europe/Copenhagen','Europe/Dublin','Europe/Helsinki',
+                'Europe/Istanbul','Europe/Kyiv','Europe/Lisbon','Europe/London',
+                'Europe/Madrid','Europe/Moscow','Europe/Oslo','Europe/Paris',
+                'Europe/Prague','Europe/Rome','Europe/Stockholm','Europe/Vienna',
+                'Europe/Warsaw','Europe/Zurich','Pacific/Auckland','Pacific/Fiji',
+                'Pacific/Honolulu','UTC',
+            ];
+        }
+    }
+
+    const allTimezones = getAllTimezones();
+
+    function populateSelect(filter = '') {
+        const lc = filter.toLowerCase();
+        tzSelect.innerHTML = '';
+        allTimezones
+            .filter(tz => !filter || tz.toLowerCase().includes(lc))
+            .forEach(tz => {
+                const opt = document.createElement('option');
+                opt.value = tz;
+                opt.textContent = tz.replace(/_/g, ' ');
+                tzSelect.appendChild(opt);
+            });
+    }
+
+    populateSelect();
+
+    tzSearch.addEventListener('input', () => {
+        populateSelect(tzSearch.value);
+        addError.style.display = 'none';
+    });
+
+    /* ── Add form submission ── */
+    document.getElementById('add-tz-form').addEventListener('submit', e => {
+        e.preventDefault();
+        addError.style.display = 'none';
+        const tzId = tzSelect.value;
+        if (!tzId) return;
+
+        // Derive a short label and friendly name from the IANA timezone ID
+        const label = generateLabel(tzId);
+        const name  = tzId.replace(/_/g, ' ');
+
+        const added = addClock({ id: tzId, label, name });
+        if (!added) {
+            addError.style.display = 'block';
+        }
+    });
+
+    /* ── Init default clocks ── */
+    DEFAULTS.forEach(tz => addClock(tz));
+
+    /* ── Start clock loop ── */
+    tick();
+    setInterval(tick, 1000);
+})();
+</script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+/* Base styles for the portfolio */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #0d0d0d;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background: #1a1a2e;
+    padding: 2rem;
+    text-align: center;
+    border-bottom: 2px solid #2a2a4a;
+    position: relative;
+}
+
+header h1 {
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    font-weight: 700;
+    background: linear-gradient(135deg, #00d4ff, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+main {
+    flex: 1;
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+section {
+    background: #1a1a2e;
+    border: 1px solid #2a2a4a;
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+}
+
+section h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #a855f7;
+    margin-bottom: 0.75rem;
+}
+
+section p {
+    color: #aaa;
+    line-height: 1.6;
+}
+
+section ul {
+    list-style: none;
+    margin-top: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+section ul li a {
+    color: #00d4ff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+section ul li a:hover {
+    color: #a855f7;
+}
+
+video {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid #2a2a4a;
+    max-height: 480px;
+    background: #000;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    color: #555;
+    font-size: 0.85rem;
+    border-top: 1px solid #1a1a2e;
+}
+
+/* Sound toggle button */
+#sound-toggle {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    border: 1px solid #2a2a4a;
+    border-radius: 8px;
+    color: #e0e0e0;
+    font-size: 1.25rem;
+    padding: 0.3rem 0.55rem;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+#sound-toggle:hover {
+    background: #1a1a2e;
+    border-color: #a855f7;
+}
