@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — Page Not Found | Ni3v4s</title>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #0d0d0d;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .code {
+            font-size: clamp(5rem, 20vw, 10rem);
+            font-weight: 700;
+            line-height: 1;
+            background: linear-gradient(135deg, #00d4ff, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            user-select: none;
+        }
+
+        h1 {
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            font-weight: 600;
+            margin-top: 1rem;
+            color: #e0e0e0;
+        }
+
+        p {
+            margin-top: 0.75rem;
+            color: #666;
+            font-size: 0.95rem;
+            max-width: 360px;
+        }
+
+        .home-link {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.65rem 1.75rem;
+            background: linear-gradient(135deg, #00d4ff, #a855f7);
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: opacity 0.2s, transform 0.1s;
+        }
+
+        .home-link:hover {
+            opacity: 0.85;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="code">404</div>
+    <h1>You're lost.</h1>
+    <p>This page doesn't exist — but the portfolio does.</p>
+    <a href="index.html" class="home-link">← Take me home</a>
+</body>
+</html>
