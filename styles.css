@@ -1,0 +1,238 @@
+/* ==========================================================================
+   S0undL4b / Ruben Nievas — Master Stylesheet (2026)
+   ========================================================================== */
+
+/* Variables de Color y Tipografía */
+:root {
+    --bg-color: #0a0a0a;
+    --surface-dark: #0d0d0d;
+    --card-bg: #080808;
+    --border-color: #1a1a1a;
+    --border-hover: #333333;
+    --text-primary: #ffffff;
+    --text-muted: #888888;
+    --accent: #666666;
+    --cakewalk-red: #ff3e3e;
+}
+
+/* Reset y Propiedades Base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow-x: hidden;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Textura Fina de Ruido Digital */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://grainy-gradients.vercel.app/noise.svg');
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* Navegación Encabezado */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 25px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    mix-blend-mode: difference;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Header & Hero Area */
+header {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.video-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    opacity: 0.35;
+    filter: grayscale(80%) contrast(1.1);
+    object-fit: cover;
+}
+
+.header-content {
+    will-change: opacity;
+    transition: opacity 0.4s ease-out;
+    padding: 0 20px;
+}
+
+h1 {
+    font-size: clamp(3rem, 10vw, 7.5rem);
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: -3px;
+    text-transform: uppercase;
+    line-height: 0.9;
+}
+
+.subtitle {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    color: var(--accent);
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    margin-top: 15px;
+}
+
+/* Secciones y Layout General */
+section {
+    padding: 90px 10%;
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+    z-index: 2;
+    background: var(--bg-color);
+}
+
+h2 {
+    font-weight: 300;
+    color: var(--accent);
+    font-size: 0.85rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+/* Etiquetas Interactivas / Tags */
+.tag {
+    border: 1px solid #2a2a2a;
+    padding: 7px 16px;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin: 4px;
+    display: inline-block;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 2px;
+}
+
+.tag:hover {
+    border-color: #ffffff;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Enlaces y Transiciones */
+.cv-link {
+    color: var(--text-primary);
+    text-decoration: none;
+    border-bottom: 1px solid #333333;
+    transition: all 0.3s ease;
+    padding-bottom: 2px;
+}
+
+.cv-link:hover {
+    color: var(--cakewalk-red);
+    border-bottom-color: var(--cakewalk-red);
+}
+
+/* Acordeón de Trayectoria */
+.cv-toggle {
+    width: 100%;
+    padding: 25px 0;
+    background: none;
+    border: none;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    font-family: 'Inter', sans-serif;
+    text-align: left;
+    transition: color 0.3s ease;
+}
+
+.cv-toggle:hover {
+    color: var(--cakewalk-red);
+}
+
+.cv-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    background: #060606;
+    border-radius: 2px;
+}
+
+.cv-container.active .cv-content {
+    max-height: 4000px;
+}
+
+.icon-plus {
+    transition: transform 0.4s ease;
+    display: inline-block;
+    font-size: 1.4rem;
+}
+
+.cv-container.active .icon-plus {
+    transform: rotate(45deg);
+}
+
+/* Reproductores de Audio Customizados */
+audio::-webkit-media-controls-panel {
+    background-color: #141414;
+}
+
+/* Responsive / Pantallas Móviles */
+@media (max-width: 768px) {
+    section {
+        padding: 60px 6%;
+    }
+
+    nav {
+        padding: 20px 5%;
+        font-size: 0.75rem;
+    }
+
+    .cv-toggle {
+        font-size: 0.95rem;
+        letter-spacing: 1px;
+    }
+
+    .subtitle {
+        font-size: 1.1rem;
+    }
+}
