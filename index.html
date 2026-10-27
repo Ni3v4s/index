@@ -88,7 +88,7 @@
             </div>
         </section>
         
-       <!-- SECCIÓN SHOWCASE / MUESTRAS SONORAS (ESTILO OUTLINE MINIMAL + RUTAS EXACTAS ASSET/AUDIO) -->
+      <!-- SECCIÓN SHOWCASE / MUESTRAS SONORAS (ESTILO POND5 RESTAURADO) -->
         <section id="audio-showcase" style="padding: 60px 0;">
             <h2 data-aos="fade-right" 
                 data-es="SHOWCASE / OBRAS & ESCÉNICAS" 
@@ -103,71 +103,78 @@
                 Diseño sonoro, composición, sonido directo y maquetas para producciones teatrales y audiovisuales:
             </p>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px;" data-aos="fade-up">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px;" data-aos="fade-up">
                 
                 <!-- TRACK #4 -->
-                <div style="background: #0a0a0a; border: 1px solid #1a1a1a; border-left: 2px solid var(--cakewalk-red); padding: 16px; border-radius: 3px;">
-                    <div class="sw-player-container">
-                        <button class="sw-play-btn" onclick="toggleSWPlay(this)">▶</button>
-                        <div class="sw-player-body">
-                            <div class="sw-track-title"
-                                 data-es="SONIDO DIRECTO & AMBIENTES <span class='sw-track-meta'>BY RUBEN NIEVAS (.MP3)</span>"
-                                 data-en="DIRECT AUDIO & AMBIENCE <span class='sw-track-meta'>BY RUBEN NIEVAS (.MP3)</span>"
-                                 data-fr="SON DIRECT & AMBIANCES <span class='sw-track-meta'>PAR RUBEN NIEVAS (.MP3)</span>">
-                                SONIDO DIRECTO & AMBIENTES <span class="sw-track-meta">BY RUBEN NIEVAS (.MP3)</span>
-                            </div>
-                            <p style="font-size: 0.72rem; color: #888; margin: 3px 0 6px 0; font-weight: 300; line-height: 1.3;"
-                               data-es="Field Recordings · Sonido Directo & Tratamiento Acústico Granular"
-                               data-en="Field Recordings · Production Audio & Granular Acoustic Processing"
-                               data-fr="Enregistrements de terrain · Son direct & Traitement acoustique granulaire">
-                                Field Recordings · Sonido Directo & Tratamiento Acústico Granular
-                            </p>
-                            <div class="sw-progress-wrapper">
-                                <span class="sw-time">0:00</span>
-                                <input type="range" class="sw-progress-bar" value="0" min="0" max="100" oninput="seekSWAudio(this)">
-                            </div>
+                <div class="custom-audio-card" style="background: #0a0a0a; border: 1px solid #1a1a1a; border-left: 2px solid var(--cakewalk-red); padding: 14px; border-radius: 4px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <h3 style="font-size: 0.9rem; margin: 0; color: #eee; font-weight: 600;"
+                            data-es="Sonido Directo & Tratamiento Acústico"
+                            data-en="Direct Audio & Acoustic Processing"
+                            data-fr="Son Direct & Traitement Acoustique">
+                            Sonido Directo & Tratamiento Acústico
+                        </h3>
+                        <span style="font-size: 0.55rem; border: 1px solid #282828; padding: 2px 5px; border-radius: 2px; color: #888; letter-spacing: 1px;">FIELD RECORDING</span>
+                    </div>
+                    <p style="font-size: 0.75rem; color: #aaa; line-height: 1.4; margin-bottom: 12px; font-weight: 300;"
+                       data-es="Captura de sonido directo y procesamiento granular de ambientes."
+                       data-en="Production sound capture and granular ambient processing."
+                       data-fr="Prise de son direct et traitement granulaire d'ambiances.">
+                        Captura de sonido directo y procesamiento granular de ambientes.
+                    </p>
+                    <div class="custom-audio-controls" style="display: flex; align-items: center; gap: 12px; background: #111; padding: 6px 10px; border-radius: 3px; border: 1px solid #222;">
+                        <button onclick="toggleCustomPlay(this)" style="background: var(--cakewalk-red); border: none; width: 28px; height: 28px; border-radius: 50%; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.7rem;">▶</button>
+                        <div style="flex-grow: 1; position: relative;">
+                            <input type="range" class="audio-progress" value="0" min="0" max="100" style="width: 100%; height: 3px; accent-color: var(--cakewalk-red); cursor: pointer; background: #222;" oninput="seekAudio(this)">
                         </div>
-                        <audio src="asset/audio/%234Field%20Recordings%20%C2%B7%20Sonido%20Directo%20%26%20Tratamiento%20Acu%CC%81stico.mp3" ontimeupdate="updateSWProgress(this)" onended="resetSWPlayer(this)"></audio>
+                        <audio src="asset/audio/%234Field%20Recordings%20%C2%B7%20Sonido%20Directo%20%26%20Tratamiento%20Acu%CC%81stico.mp3" ontimeupdate="updateProgress(this)" onended="resetPlayer(this)"></audio>
                     </div>
                 </div>
 
                 <!-- TRACK #1 -->
-                <div style="background: #0a0a0a; border: 1px solid #1a1a1a; border-left: 2px solid var(--accent); padding: 16px; border-radius: 3px;">
-                    <div class="sw-player-container">
-                        <button class="sw-play-btn" onclick="toggleSWPlay(this)">▶</button>
-                        <div class="sw-player-body">
-                            <div class="sw-track-title"
-                                 data-es="ESCENA TEATRAL N.º 1 <span class='sw-track-meta'>BY RUBEN NIEVAS (.MP3)</span>"
-                                 data-en="THEATER SCENE NO. 1 <span class='sw-track-meta'>BY RUBEN NIEVAS (.MP3)</span>"
-                                 data-fr="SCÈNE THÉÂTRALE N° 1 <span class='sw-track-meta'>PAR RUBEN NIEVAS (.MP3)</span>">
-                                ESCENA TEATRAL N.º 1 <span class="sw-track-meta">BY RUBEN NIEVAS (.MP3)</span>
-                            </div>
-                            <p style="font-size: 0.72rem; color: #888; margin: 3px 0 6px 0; font-weight: 300; line-height: 1.3;"
-                               data-es="Puesta en Escena · Diseño Espacial & Tensión Dramática"
-                               data-en="Stage Production · Spatial Design & Dramatic Tension"
-                               data-fr="Mise en scène · Design spatial & Tension dramatique">
-                                Puesta en Escena · Diseño Espacial & Tensión Dramática
-                            </p>
-                            <div class="sw-progress-wrapper">
-                                <span class="sw-time">0:00</span>
-                                <input type="range" class="sw-progress-bar" value="0" min="0" max="100" oninput="seekSWAudio(this)">
-                            </div>
+                <div class="custom-audio-card" style="background: #0a0a0a; border: 1px solid #1a1a1a; border-left: 2px solid var(--accent); padding: 14px; border-radius: 4px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <h3 style="font-size: 0.9rem; margin: 0; color: #eee; font-weight: 600;"
+                            data-es="Escena Teatral N.º 1"
+                            data-en="Theater Scene No. 1"
+                            data-fr="Scène Théâtrale N° 1">
+                            Escena Teatral N.º 1
+                        </h3>
+                        <span style="font-size: 0.55rem; border: 1px solid #282828; padding: 2px 5px; border-radius: 2px; color: #888; letter-spacing: 1px;"
+                              data-es="TEATRO" data-en="THEATER" data-fr="THÉÂTRE">TEATRO</span>
+                    </div>
+                    <p style="font-size: 0.75rem; color: #aaa; line-height: 1.4; margin-bottom: 12px; font-weight: 300;"
+                       data-es="Diseño de espacio acústico y tensión dramática para puesta en escena."
+                       data-en="Acoustic space design and dramatic tension for stage production."
+                       data-fr="Conception de l'espace acoustique et tension dramatique pour la scène.">
+                        Diseño de espacio acústico y tensión dramática para puesta en escena.
+                    </p>
+                    <div class="custom-audio-controls" style="display: flex; align-items: center; gap: 12px; background: #111; padding: 6px 10px; border-radius: 3px; border: 1px solid #222;">
+                        <button onclick="toggleCustomPlay(this)" style="background: var(--accent); border: none; width: 28px; height: 28px; border-radius: 50%; color: #000; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: bold;">▶</button>
+                        <div style="flex-grow: 1; position: relative;">
+                            <input type="range" class="audio-progress" value="0" min="0" max="100" style="width: 100%; height: 3px; accent-color: var(--accent); cursor: pointer; background: #222;" oninput="seekAudio(this)">
                         </div>
-                        <audio src="asset/audio/%231%20Theater%20scene.mp3" ontimeupdate="updateSWProgress(this)" onended="resetSWPlayer(this)"></audio>
+                        <audio src="asset/audio/%231%20Theater%20scene.mp3" ontimeupdate="updateProgress(this)" onended="resetPlayer(this)"></audio>
                     </div>
                 </div>
 
                 <!-- TRACK #2 -->
-                <div style="background: #0a0a0a; border: 1px solid #1a1a1a; border-left: 2px solid var(--accent); padding: 16px; border-radius: 3px;">
-                    <div class="sw-player-container">
-                        <button class="sw-play-btn" onclick="toggleSWPlay(this)">▶</button>
-                        <div class="sw-player-body">
-                            <div class="sw-track-title"
-                                 data-es="ESCENA TEATRAL N.º 2 <span class='sw-track-meta'>BY RUBEN NIEVAS (.MP3)</span>"
-                                 data-en="THEATER SCENE NO. 2 <span class='sw-track-meta'>BY RUBEN NIEVAS (.MP3)</span>"
-                                 data-fr="SCÈNE THÉÂTRALE N° 2 <span class='sw-track-meta'>PAR RUBEN NIEVAS (.MP3)</span>">
-                                ESCENA TEATRAL N.º 2 <span class="sw-track-meta">BY RUBEN NIEVAS (.MP3)
-                                    
+                <div class="custom-audio-card" style="background: #0a0a0a; border: 1px solid #1a1a1a; border-left: 2px solid var(--accent); padding: 14px; border-radius: 4px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <h3 style="font-size: 0.9rem; margin: 0; color: #eee; font-weight: 600;"
+                            data-es="Escena Teatral N.º 2"
+                            data-en="Theater Scene No. 2"
+                            data-fr="Scène Théâtrale N° 2">
+                            Escena Teatral N.º 2
+                        </h3>
+                        <span style="font-size: 0.55rem; border: 1px solid #282828; padding: 2px 5px; border-radius: 2px; color: #888; letter-spacing: 1px;"
+                              data-es="TEATRO" data-en="THEATER" data-fr="THÉÂTRE">TEATRO</span>
+                    </div>
+                    <p style="font-size: 0.75rem; color: #aaa; line-height: 1.4; margin-bottom: 12px; font-weight: 300;"
+                       data-es="Texturas sonoras micro-glitch y transiciones atmosféricas."
+                       data-en="Micro-glitch sound textures and atmospheric transitions."
+                       data-fr="Textures sonores micro-glitch
+                       
         <!-- LEGADO & COLABORACIONES -->
         <section id="legacy">
             <h2 data-aos="fade-right" data-es="CORE COLLABORATION" data-en="CORE COLLABORATION" data-fr="COLLABORATIONS">CORE COLLABORATION</h2>
