@@ -35,6 +35,38 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+#sound-toggle {
+    display: none;
+}
+
+#ambient-audio-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text-primary);
+    font: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+}
+
+#ambient-audio-toggle:hover,
+#ambient-audio-toggle.is-playing {
+    border-color: var(--cakewalk-red);
+    color: var(--cakewalk-red);
+}
+
+#ambient-audio-toggle:focus-visible {
+    outline: 2px solid var(--text-primary);
+    outline-offset: 3px;
+}
+
 /* Textura Fina de Ruido Digital */
 body::before {
     content: "";
@@ -68,6 +100,7 @@ nav {
 /* Header & Hero Area */
 header {
     position: relative;
+    isolation: isolate;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -94,7 +127,6 @@ header {
 
 .header-content {
     will-change: opacity;
-    transition: opacity 0.4s ease-out;
     padding: 0 20px;
 }
 
@@ -115,6 +147,56 @@ h1 {
     margin-top: 15px;
 }
 
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.cta-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 10px 18px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    color: var(--text-primary);
+    font-size: 0.72rem;
+    letter-spacing: 1px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.cta-link-primary {
+    border-color: var(--cakewalk-red);
+    background: var(--cakewalk-red);
+    color: #0a0a0a;
+}
+
+.cta-link-primary:hover {
+    border-color: #ff6868;
+    background: #ff6868;
+}
+
+.cta-link-secondary {
+    border-color: rgba(255, 255, 255, 0.35);
+    background: rgba(10, 10, 10, 0.35);
+}
+
+.cta-link-secondary:hover {
+    border-color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.cta-link:focus-visible {
+    outline: 2px solid var(--text-primary);
+    outline-offset: 3px;
+}
+
 /* Secciones y Layout General */
 section {
     padding: 90px 10%;
@@ -122,6 +204,17 @@ section {
     position: relative;
     z-index: 2;
     background: var(--bg-color);
+}
+
+#biografia h2,
+#biografia .bio-text,
+#audio-showcase h2,
+#audio-showcase > p,
+#audio-showcase .custom-audio-card,
+#legacy h2,
+#legacy > div > div {
+    filter: opacity(var(--scroll-fade, 1));
+    transition: filter 0.1s linear;
 }
 
 h2 {
@@ -167,6 +260,31 @@ h2 {
     border-bottom-color: var(--cakewalk-red);
 }
 
+.streaming-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 8px 14px;
+    margin: 4px 0 18px;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+}
+
+.contact-invitation {
+    margin-bottom: 20px;
+    color: #ccc;
+    font-weight: 300;
+}
+
+.contact-cta {
+    margin-bottom: 24px;
+}
+
+#audio-showcase,
+#contact {
+    scroll-margin-top: 85px;
+}
+
 /* Acordeón de Trayectoria */
 .cv-toggle {
     width: 100%;
@@ -198,7 +316,57 @@ h2 {
 }
 
 .cv-container.active .cv-content {
-    max-height: 4000px;
+    max-height: 12000px;
+}
+
+.album-detail {
+    margin-top: 20px;
+    border-top: 1px solid var(--border-color);
+    color: #ccc;
+    font-size: 0.8rem;
+}
+
+.album-detail summary {
+    padding: 14px 0;
+    color: var(--cakewalk-red);
+    cursor: pointer;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+}
+
+.album-detail summary:hover {
+    color: #ff6868;
+}
+
+.album-detail summary:focus-visible {
+    outline: 2px solid var(--text-primary);
+    outline-offset: 3px;
+}
+
+.album-detail-content {
+    display: grid;
+    gap: 12px;
+    padding-bottom: 20px;
+    line-height: 1.7;
+}
+
+.album-detail-content h5 {
+    margin-top: 8px;
+    color: var(--text-primary);
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.album-detail-content ul {
+    display: grid;
+    gap: 6px;
+    padding-left: 18px;
+}
+
+.album-meta {
+    color: var(--text-muted);
+    font-size: 0.75rem;
 }
 
 .icon-plus {
@@ -234,5 +402,14 @@ audio::-webkit-media-controls-panel {
 
     .subtitle {
         font-size: 1.1rem;
+    }
+
+    .hero-actions {
+        gap: 8px;
+    }
+
+    .cta-link {
+        padding: 10px 13px;
+        font-size: 0.65rem;
     }
 }

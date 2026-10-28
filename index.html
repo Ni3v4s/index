@@ -60,7 +60,7 @@
 
     <!-- HEADER / HERO CON VIDEO Y CITA DE BACON -->
     <header>
-        <video autoplay muted loop playsinline class="video-background">
+        <video autoplay muted playsinline class="video-background">
             <source src="ushuaia_otonal.mp4" type="video/mp4">
         </video>
         <div class="header-content" id="headerText">
@@ -68,9 +68,13 @@
             <p class="subtitle" data-aos="fade-up" data-aos-delay="300" data-es="Diseño Sonoro & Gestión Cultural" data-en="Sound Design & Cultural Management" data-fr="Design Sonore & Gestion Culturelle">
                 Diseño Sonoro & Gestión Cultural
             </p>
+            <div class="hero-actions" data-aos="fade-up" data-aos-delay="400">
+                <a class="cta-link cta-link-primary" href="#audio-showcase" data-es="Escuchar trabajos" data-en="Listen to selected work" data-fr="Écouter des œuvres">Escuchar trabajos</a>
+                <a class="cta-link cta-link-secondary" href="#contact" data-es="Hablemos de un proyecto" data-en="Discuss a project" data-fr="Parlons d'un projet">Hablemos de un proyecto</a>
+            </div>
             
             <!-- CITA DE FRANCIS BACON -->
-            <blockquote class="bacon-quote" data-aos="fade-up" data-aos-delay="500" style="margin-top: 40px; max-width: 650px; font-style: italic; font-family: 'Playfair Display', serif; font-size: 0.95rem; color: #aaa; line-height: 1.6; border-left: 1px solid var(--cakewalk-red); padding-left: 20px; text-align: left;">
+            <blockquote class="bacon-quote" data-aos="fade-up" data-aos-delay="500" style="margin-top: 30px; max-width: 650px; font-style: italic; font-family: 'Playfair Display', serif; font-size: 0.95rem; color: #aaa; line-height: 1.6; border-left: 1px solid var(--cakewalk-red); padding-left: 20px; text-align: left;">
                 <p id="quote-text" data-es="«Tenemos también casas del sonido, donde representamos y practicamos todos los sonidos y sus generaciones. Tenemos armonías que no conocéis, de cuartos de tono y mayores escalas de sonido...»" data-en="«We have also sound-houses, where we practice and represent all sounds, and their generations. We have harmonies which you have not, of quarter-sounds, and lesser slides of sounds...»" data-fr="«Nous avons aussi des maisons du son, où nous pratiquons et représentons tous les sons et leurs générations. Nous avons des harmonies que vous n'avez pas, de quarts de ton...»">
                     «Tenemos también casas del sonido, donde representamos y practicamos todos los sonidos y sus generaciones. Tenemos armonías que no conocéis, de cuartos de tono y mayores escalas de sonido...»
                 </p>
@@ -88,32 +92,83 @@
             </div>
         </section>
         
-      <!-- SECCIÓN SHOWCASE / MUESTRAS SONORAS (ESTILO POND5 RESTAURADO) -->
+        <!-- SECCIÓN SHOWCASE / MUESTRAS SONORAS -->
         <section id="audio-showcase" style="padding: 60px 0;">
-            <h2 data-aos="fade-right" 
-                data-es="SHOWCASE / OBRAS & ESCÉNICAS" 
-                data-en="SHOWCASE / PERFORMING ARTS" 
+            <h2 data-aos="fade-right"
+                data-es="SHOWCASE / OBRAS & ESCÉNICAS"
+                data-en="SHOWCASE / PERFORMING ARTS"
                 data-fr="SHOWCASE / ARTS DU SPECTACLE">
                 SHOWCASE / OBRAS & ESCÉNICAS
             </h2>
-            <p style="color: #777; font-weight: 300; font-size: 0.85rem; margin-bottom: 30px;" 
-               data-es="Diseño sonoro, composición, sonido directo y maquetas para producciones teatrales y audiovisuales:" 
-               data-en="Sound design, composition, production audio, and mockups for theater and audiovisual projects:" 
+            <p style="color: #777; font-weight: 300; font-size: 0.85rem; margin-bottom: 30px;"
+               data-es="Diseño sonoro, composición, sonido directo y maquetas para producciones teatrales y audiovisuales:"
+               data-en="Sound design, composition, production audio, and mockups for theater and audiovisual projects:"
                data-fr="Design sonore, composition, son direct et maquettes pour le théâtre et l'audiovisuel :">
                 Diseño sonoro, composición, sonido directo y maquetas para producciones teatrales y audiovisuales:
             </p>
 
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px;" data-aos="fade-up">
-                
-                <!-- TRACK #4 -->
+                <div class="custom-audio-card" style="background: #0a0a0a; border: 1px solid #1a1a1a; border-left: 2px solid var(--accent); padding: 14px; border-radius: 4px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <h3 style="font-size: 0.9rem; margin: 0; color: #eee; font-weight: 600;"
+                            data-es="Escena Teatral N.º 1" data-en="Theater Scene No. 1" data-fr="Scène Théâtrale N° 1">Escena Teatral N.º 1</h3>
+                        <span style="font-size: 0.55rem; border: 1px solid #282828; padding: 2px 5px; border-radius: 2px; color: #888; letter-spacing: 1px;" data-es="TEATRO" data-en="THEATER" data-fr="THÉÂTRE">TEATRO</span>
+                    </div>
+                    <p style="font-size: 0.75rem; color: #aaa; line-height: 1.4; margin-bottom: 12px; font-weight: 300;"
+                       data-es="Diseño de espacio acústico y tensión dramática para puesta en escena."
+                       data-en="Acoustic space design and dramatic tension for stage production."
+                       data-fr="Conception de l'espace acoustique et tension dramatique pour la scène.">
+                        Diseño de espacio acústico y tensión dramática para puesta en escena.
+                    </p>
+                    <div class="custom-audio-controls" style="display: flex; align-items: center; gap: 12px; background: #111; padding: 6px 10px; border-radius: 3px; border: 1px solid #222;">
+                        <button type="button" aria-label="Reproducir audio" onclick="toggleCustomPlay(this)" style="background: var(--accent); border: none; width: 28px; height: 28px; border-radius: 50%; color: #000; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: bold;">▶</button>
+                        <input type="range" class="audio-progress" aria-label="Progreso del audio" value="0" min="0" max="100" style="flex-grow: 1; width: 100%; height: 3px; accent-color: var(--accent); cursor: pointer; background: #222;" oninput="seekAudio(this)">
+                        <audio preload="none" src="asset/audio/%231%20Theater%20scene.mp3" ontimeupdate="updateProgress(this)" onended="resetPlayer(this)"></audio>
+                    </div>
+                </div>
+
+                <div class="custom-audio-card" style="background: #0a0a0a; border: 1px solid #1a1a1a; border-left: 2px solid var(--accent); padding: 14px; border-radius: 4px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <h3 style="font-size: 0.9rem; margin: 0; color: #eee; font-weight: 600;"
+                            data-es="Escena Teatral N.º 2" data-en="Theater Scene No. 2" data-fr="Scène Théâtrale N° 2">Escena Teatral N.º 2</h3>
+                        <span style="font-size: 0.55rem; border: 1px solid #282828; padding: 2px 5px; border-radius: 2px; color: #888; letter-spacing: 1px;" data-es="TEATRO" data-en="THEATER" data-fr="THÉÂTRE">TEATRO</span>
+                    </div>
+                    <p style="font-size: 0.75rem; color: #aaa; line-height: 1.4; margin-bottom: 12px; font-weight: 300;"
+                       data-es="Texturas sonoras micro-glitch y transiciones atmosféricas."
+                       data-en="Micro-glitch sound textures and atmospheric transitions."
+                       data-fr="Textures sonores micro-glitch et transitions atmosphériques.">
+                        Texturas sonoras micro-glitch y transiciones atmosféricas.
+                    </p>
+                    <div class="custom-audio-controls" style="display: flex; align-items: center; gap: 12px; background: #111; padding: 6px 10px; border-radius: 3px; border: 1px solid #222;">
+                        <button type="button" aria-label="Reproducir audio" onclick="toggleCustomPlay(this)" style="background: var(--accent); border: none; width: 28px; height: 28px; border-radius: 50%; color: #000; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: bold;">▶</button>
+                        <input type="range" class="audio-progress" aria-label="Progreso del audio" value="0" min="0" max="100" style="flex-grow: 1; width: 100%; height: 3px; accent-color: var(--accent); cursor: pointer; background: #222;" oninput="seekAudio(this)">
+                        <audio preload="none" src="asset/audio/%232%20Theater%20scene.mp3" ontimeupdate="updateProgress(this)" onended="resetPlayer(this)"></audio>
+                    </div>
+                </div>
+
+                <div class="custom-audio-card" style="background: #0a0a0a; border: 1px solid #1a1a1a; border-left: 2px solid var(--accent); padding: 14px; border-radius: 4px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <h3 style="font-size: 0.9rem; margin: 0; color: #eee; font-weight: 600;"
+                            data-es="Pieza de Estudio / Orígenes" data-en="Study Piece / Orígenes" data-fr="Pièce d'Étude / Orígenes">Pieza de Estudio / Orígenes</h3>
+                        <span style="font-size: 0.55rem; border: 1px solid #282828; padding: 2px 5px; border-radius: 2px; color: #888; letter-spacing: 1px;" data-es="COMPOSICIÓN" data-en="COMPOSITION" data-fr="COMPOSITION">COMPOSICIÓN</span>
+                    </div>
+                    <p style="font-size: 0.75rem; color: #aaa; line-height: 1.4; margin-bottom: 12px; font-weight: 300;"
+                       data-es="Exploración tímbrica y desarrollo de sintetizadores analógicos/digitales."
+                       data-en="Timbral exploration and analog/digital synthesizer patch design."
+                       data-fr="Exploration timbrale et développement de synthétiseurs analogiques/numériques.">
+                        Exploración tímbrica y desarrollo de sintetizadores analógicos/digitales.
+                    </p>
+                    <div class="custom-audio-controls" style="display: flex; align-items: center; gap: 12px; background: #111; padding: 6px 10px; border-radius: 3px; border: 1px solid #222;">
+                        <button type="button" aria-label="Reproducir audio" onclick="toggleCustomPlay(this)" style="background: var(--accent); border: none; width: 28px; height: 28px; border-radius: 50%; color: #000; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: bold;">▶</button>
+                        <input type="range" class="audio-progress" aria-label="Progreso del audio" value="0" min="0" max="100" style="flex-grow: 1; width: 100%; height: 3px; accent-color: var(--accent); cursor: pointer; background: #222;" oninput="seekAudio(this)">
+                        <audio preload="none" src="asset/audio/%233%20Ori%CC%81genes.mp3" ontimeupdate="updateProgress(this)" onended="resetPlayer(this)"></audio>
+                    </div>
+                </div>
+
                 <div class="custom-audio-card" style="background: #0a0a0a; border: 1px solid #1a1a1a; border-left: 2px solid var(--cakewalk-red); padding: 14px; border-radius: 4px;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
                         <h3 style="font-size: 0.9rem; margin: 0; color: #eee; font-weight: 600;"
-                            data-es="Sonido Directo & Tratamiento Acústico"
-                            data-en="Direct Audio & Acoustic Processing"
-                            data-fr="Son Direct & Traitement Acoustique">
-                            Sonido Directo & Tratamiento Acústico
-                        </h3>
+                            data-es="Sonido Directo & Tratamiento Acústico" data-en="Direct Audio & Acoustic Processing" data-fr="Son Direct & Traitement Acoustique">Sonido Directo & Tratamiento Acústico</h3>
                         <span style="font-size: 0.55rem; border: 1px solid #282828; padding: 2px 5px; border-radius: 2px; color: #888; letter-spacing: 1px;">FIELD RECORDING</span>
                     </div>
                     <p style="font-size: 0.75rem; color: #aaa; line-height: 1.4; margin-bottom: 12px; font-weight: 300;"
@@ -123,58 +178,52 @@
                         Captura de sonido directo y procesamiento granular de ambientes.
                     </p>
                     <div class="custom-audio-controls" style="display: flex; align-items: center; gap: 12px; background: #111; padding: 6px 10px; border-radius: 3px; border: 1px solid #222;">
-                        <button onclick="toggleCustomPlay(this)" style="background: var(--cakewalk-red); border: none; width: 28px; height: 28px; border-radius: 50%; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.7rem;">▶</button>
-                        <div style="flex-grow: 1; position: relative;">
-                            <input type="range" class="audio-progress" value="0" min="0" max="100" style="width: 100%; height: 3px; accent-color: var(--cakewalk-red); cursor: pointer; background: #222;" oninput="seekAudio(this)">
-                        </div>
-                        <audio src="asset/audio/%234Field%20Recordings%20%C2%B7%20Sonido%20Directo%20%26%20Tratamiento%20Acu%CC%81stico.mp3" ontimeupdate="updateProgress(this)" onended="resetPlayer(this)"></audio>
+                        <button type="button" aria-label="Reproducir audio" onclick="toggleCustomPlay(this)" style="background: var(--cakewalk-red); border: none; width: 28px; height: 28px; border-radius: 50%; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.7rem;">▶</button>
+                        <input type="range" class="audio-progress" aria-label="Progreso del audio" value="0" min="0" max="100" style="flex-grow: 1; width: 100%; height: 3px; accent-color: var(--cakewalk-red); cursor: pointer; background: #222;" oninput="seekAudio(this)">
+                        <audio preload="none" src="asset/audio/%234Field%20Recordings%20%C2%B7%20Sonido%20Directo%20%26%20Tratamiento%20Acu%CC%81stico.mp3" ontimeupdate="updateProgress(this)" onended="resetPlayer(this)"></audio>
                     </div>
                 </div>
 
-                <!-- TRACK #1 -->
                 <div class="custom-audio-card" style="background: #0a0a0a; border: 1px solid #1a1a1a; border-left: 2px solid var(--accent); padding: 14px; border-radius: 4px;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
                         <h3 style="font-size: 0.9rem; margin: 0; color: #eee; font-weight: 600;"
-                            data-es="Escena Teatral N.º 1"
-                            data-en="Theater Scene No. 1"
-                            data-fr="Scène Théâtrale N° 1">
-                            Escena Teatral N.º 1
-                        </h3>
-                        <span style="font-size: 0.55rem; border: 1px solid #282828; padding: 2px 5px; border-radius: 2px; color: #888; letter-spacing: 1px;"
-                              data-es="TEATRO" data-en="THEATER" data-fr="THÉÂTRE">TEATRO</span>
+                            data-es="Manuelita (Arreglo & Producción)" data-en="Manuelita (Arrangement & Production)" data-fr="Manuelita (Arrangement & Production)">Manuelita (Arreglo & Producción)</h3>
+                        <span style="font-size: 0.55rem; border: 1px solid #282828; padding: 2px 5px; border-radius: 2px; color: #888; letter-spacing: 1px;" data-es="COMEDIA" data-en="COMEDY" data-fr="COMÉDIE">COMEDIA</span>
                     </div>
                     <p style="font-size: 0.75rem; color: #aaa; line-height: 1.4; margin-bottom: 12px; font-weight: 300;"
-                       data-es="Diseño de espacio acústico y tensión dramática para puesta en escena."
-                       data-en="Acoustic space design and dramatic tension for stage production."
-                       data-fr="Conception de l'espace acoustique et tension dramatique pour la scène.">
-                        Diseño de espacio acústico y tensión dramática para puesta en escena.
+                       data-es="Arreglo y producción musical de Manuelita para una producción teatral."
+                       data-en="Musical arrangement and production of Manuelita for a theater production."
+                       data-fr="Arrangement et production musicale de Manuelita pour une production théâtrale.">
+                        Arreglo y producción musical de Manuelita para una producción teatral.
                     </p>
                     <div class="custom-audio-controls" style="display: flex; align-items: center; gap: 12px; background: #111; padding: 6px 10px; border-radius: 3px; border: 1px solid #222;">
-                        <button onclick="toggleCustomPlay(this)" style="background: var(--accent); border: none; width: 28px; height: 28px; border-radius: 50%; color: #000; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: bold;">▶</button>
-                        <div style="flex-grow: 1; position: relative;">
-                            <input type="range" class="audio-progress" value="0" min="0" max="100" style="width: 100%; height: 3px; accent-color: var(--accent); cursor: pointer; background: #222;" oninput="seekAudio(this)">
-                        </div>
-                        <audio src="asset/audio/%231%20Theater%20scene.mp3" ontimeupdate="updateProgress(this)" onended="resetPlayer(this)"></audio>
+                        <button type="button" aria-label="Reproducir audio" onclick="toggleCustomPlay(this)" style="background: var(--accent); border: none; width: 28px; height: 28px; border-radius: 50%; color: #000; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: bold;">▶</button>
+                        <input type="range" class="audio-progress" aria-label="Progreso del audio" value="0" min="0" max="100" style="flex-grow: 1; width: 100%; height: 3px; accent-color: var(--accent); cursor: pointer; background: #222;" oninput="seekAudio(this)">
+                        <audio preload="none" src="asset/audio/%235%20comedia_manuelita_daniel%20romano.mp3" ontimeupdate="updateProgress(this)" onended="resetPlayer(this)"></audio>
                     </div>
                 </div>
 
-                <!-- TRACK #2 -->
                 <div class="custom-audio-card" style="background: #0a0a0a; border: 1px solid #1a1a1a; border-left: 2px solid var(--accent); padding: 14px; border-radius: 4px;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
                         <h3 style="font-size: 0.9rem; margin: 0; color: #eee; font-weight: 600;"
-                            data-es="Escena Teatral N.º 2"
-                            data-en="Theater Scene No. 2"
-                            data-fr="Scène Théâtrale N° 2">
-                            Escena Teatral N.º 2
-                        </h3>
-                        <span style="font-size: 0.55rem; border: 1px solid #282828; padding: 2px 5px; border-radius: 2px; color: #888; letter-spacing: 1px;"
-                              data-es="TEATRO" data-en="THEATER" data-fr="THÉÂTRE">TEATRO</span>
+                            data-es="Mi Caballito (Arreglo & Producción)" data-en="Mi Caballito (Arrangement & Production)" data-fr="Mi Caballito (Arrangement & Production)">Mi Caballito (Arreglo & Producción)</h3>
+                        <span style="font-size: 0.55rem; border: 1px solid #282828; padding: 2px 5px; border-radius: 2px; color: #888; letter-spacing: 1px;" data-es="COMEDIA" data-en="COMEDY" data-fr="COMÉDIE">COMEDIA</span>
                     </div>
                     <p style="font-size: 0.75rem; color: #aaa; line-height: 1.4; margin-bottom: 12px; font-weight: 300;"
-                       data-es="Texturas sonoras micro-glitch y transiciones atmosféricas."
-                       data-en="Micro-glitch sound textures and atmospheric transitions."
-                       data-fr="Textures sonores micro-glitch
-                       
+                       data-es="Composición e instrumentación incidental para comedia."
+                       data-en="Incidental composition and instrumentation for comedy production."
+                       data-fr="Composition et instrumentation incidentale pour comédie.">
+                        Composición e instrumentación incidental para comedia.
+                    </p>
+                    <div class="custom-audio-controls" style="display: flex; align-items: center; gap: 12px; background: #111; padding: 6px 10px; border-radius: 3px; border: 1px solid #222;">
+                        <button type="button" aria-label="Reproducir audio" onclick="toggleCustomPlay(this)" style="background: var(--accent); border: none; width: 28px; height: 28px; border-radius: 50%; color: #000; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: bold;">▶</button>
+                        <input type="range" class="audio-progress" aria-label="Progreso del audio" value="0" min="0" max="100" style="flex-grow: 1; width: 100%; height: 3px; accent-color: var(--accent); cursor: pointer; background: #222;" oninput="seekAudio(this)">
+                        <audio preload="none" src="asset/audio/%236%20comedia_mi_caballito_arreglo-2027.mp3" ontimeupdate="updateProgress(this)" onended="resetPlayer(this)"></audio>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- LEGADO & COLABORACIONES -->
         <section id="legacy">
             <h2 data-aos="fade-right" data-es="CORE COLLABORATION" data-en="CORE COLLABORATION" data-fr="COLLABORATIONS">CORE COLLABORATION</h2>
@@ -209,14 +258,83 @@
                         <div>
                             <h4 style="color: var(--cakewalk-red); text-transform: uppercase; font-size: 0.8rem; border-bottom: 1px solid #333; padding-bottom: 10px; letter-spacing: 2px;">Discografía & Premios</h4>
                             <ul style="list-style: none; padding: 20px 0 0 0; font-size: 0.85rem; line-height: 1.8;">
-                                <li>2024: <strong>Imaginario</strong></li>
-                                <li>2022: <strong>Tales</strong></li>
-                                <li>2020: <strong>Confinement / Dawdled</strong></li>
-                                <li>2019: <strong>CircumP0L4r</strong></li>
-                                <li>2016: <strong>Sketches (Piano)</strong></li>
+                                <li>2024: <strong>Imaginario</strong> — Instantes Sur Producciones.</li>
+                                <li>2022: <strong>Tales</strong> — Instantes Sur Producciones.</li>
+                                <li>2020: <strong>Confinement / Dawdled</strong> — Arte y diseño de tapa: Horacio Lorente.</li>
+                                <li>2019: <strong>CircumP0L4r</strong> — Fotografía y diseño: Ruben Nievas.</li>
+                                <li>2016: <strong>Sketches (Piano)</strong> — Arte y diseño de tapa: Horacio Lorente.</li>
                                 <li>2007: <strong>Antártida (rgc:audio Stack)</strong></li>
                                 <li>2004: <strong>Frozen Dreams</strong></li>
                             </ul>
+                            <div class="streaming-links" aria-label="Escuchar el catálogo de Ruben Nievas">
+                                <span>Escuchar el catálogo:</span>
+                                <a class="cv-link" href="https://music.apple.com/ar/artist/ruben-nievas/859693487?l=en-GB" target="_blank" rel="noopener noreferrer">Apple Music</a>
+                                <a class="cv-link" href="https://tidal.com/artist/5552263/u" target="_blank" rel="noopener noreferrer">Tidal</a>
+                                <a class="cv-link" href="https://open.spotify.com/artist/4gftDU20natF8YOuUCCzZ5?si=j-5wgzTVQNGaPeygLbGdaw" target="_blank" rel="noopener noreferrer">Spotify</a>
+                            </div>
+                            <details class="album-detail">
+                                <summary>IMAGINARIO (2024) — FICHA Y CONCEPTO</summary>
+                                <div class="album-detail-content">
+                                    <p class="album-meta">Lanzamiento: principios de 2024 · Álbum / antología incidental · 30 minutos · Instantes Sur Producciones</p>
+                                    <p><em>Imaginario</em> es una síntesis antológica de música compuesta por Ruben Nievas para expresiones escénicas y audiovisuales de Tierra del Fuego, entre ellas teatro, cine independiente y videoarte. Entre el piano clásico, la música incidental y el <em>classical crossover</em>, funciona como una galería sonora introspectiva, minimalista y envolvente.</p>
+
+                                    <h5>Crear mundos en el aire</h5>
+                                    <p>El título alude al proceso de composición incidental de Nievas: a partir de textos dramáticos y conversaciones con directores sobre la psicología de los personajes, imagina el ritmo de los actores, la luz y la atmósfera de una puesta antes de que existan la escenografía, el vestuario o los ensayos. El álbum celebra esa intuición y la posibilidad de construir universos sonoros antes de que se enciendan las luces del teatro.</p>
+
+                                    <h5>Música tras las historias</h5>
+                                    <ul>
+                                        <li><strong><em>Amalfi</em>:</strong> «Tejiendo imágenes», «Tema de Ascasubi», «Carmela» y «Tema de Braun» nacieron para la obra teatral del dramaturgo Enrique Papatino.</li>
+                                        <li><strong><em>Disforia</em>:</strong> «Bailé con mi sombra» fue creada para el cortometraje de la realizadora Lené Nievas.</li>
+                                        <li><strong>Artes visuales y performance:</strong> «Sin» musicalizó el proyecto de videoarte de Laura Aguilera Mendieta; «Afrodita» fue concebida para la obra <em>Torta de Chocolate</em>, de Pedro Romero.</li>
+                                    </ul>
+
+                                    <h5>El sello del fin del mundo</h5>
+                                    <p>La geografía austral atraviesa la textura del disco. Piezas instrumentales como «Oscuridad Otoñal» y «Terrestre» evocan el aislamiento, el viento, el frío y los horizontes infinitos del sur argentino.</p>
+
+                                    <h5>Créditos</h5>
+                                    <ul>
+                                        <li>Composición, piano, sintetizadores y diseño sonoro: Ruben Nievas.</li>
+                                        <li>Diseño y arte de portada: Victoria Lerario.</li>
+                                        <li>Fotografía: Pablo Fabro.</li>
+                                        <li>Mezcla y masterización: Ruben Nievas.</li>
+                                        <li>Producción: Ushuaia, Tierra del Fuego, Argentina. Configuración técnica basada en la arquitectura de producción de <em>CircumP0L4r</em> y <em>Tales</em>.</li>
+                                    </ul>
+                                </div>
+                            </details>
+                            <details class="album-detail">
+                                <summary>TALES (2022) — FICHA Y CONCEPTO</summary>
+                                <div class="album-detail-content">
+                                    <p class="album-meta">Lanzamiento: 1 de diciembre de 2022 · 9 piezas · 42 minutos</p>
+                                    <p><em>Tales</em> (Historias o Cuentos) es un viaje sonoro narrativo entre la música clásica contemporánea, la música cinemática, el jazz de vanguardia y el ambient. Concebido como una colección de bandas sonoras para relatos íntimos y regionales, combina el piano acústico con arreglos de sintetizadores y diseño sonoro para narrar sin palabras.</p>
+
+                                    <h5>Identidad sonora y percepción auditiva</h5>
+                                    <p>La estética del álbum está moldeada por la hipoacusia y el síndrome de Menière de Ruben Nievas. El proceso compositivo trata el silencio como una nota: evita la saturación y permite que cada frecuencia respire. El registro grave del piano y los subgraves sintéticos dan al sonido una dimensión física, evocando el viento austral y la inmensidad del fin del mundo. Delays y procesamiento estéreo crean espacios amplios donde las notas se extinguen lentamente, mientras que acordes suspendidos y formas libres —con influencias de Lyle Mays— mutan como el paisaje patagónico.</p>
+
+                                    <h5>Instrumentos originarios y memoria sonora</h5>
+                                    <p>El tema <em>«Tales»</em> cruza sintetizadores cinemáticos con registros antropológicos realizados en los años noventa por el investigador y folclorista fueguino Eduardo Pedro Coria en una comunidad indígena de Neuquén. Coria cedió el archivo analógico a Nievas, quien digitalizó, limpió y procesó las muestras de trutruka, pifilka y cascahuillas. El resultado enlaza la vanguardia electrónica con raíces sonoras de la Patagonia originaria.</p>
+
+                                    <h5>Colaboraciones y dimensión audiovisual</h5>
+                                    <p>El director y arreglista francés Jean-Christophe François colaboró a distancia en la tímbrica orquestal de cuerdas y vientos sintéticos. Su aporte se aprecia en <em>«Elba Bewildered»</em>, del proyecto audiovisual <em>From Elba &amp; Iris</em>. <em>«Kauyeken (Being at Home)»</em> —«hogar» en una lengua de los pueblos originarios, según el concepto del proyecto— traduce el aislamiento, el turbal y el clima fueguino en texturas de síntesis de evolución lenta y acordes espaciados.</p>
+
+                                    <h5>Cuatro momentos del álbum</h5>
+                                    <ul>
+                                        <li><strong>«Tales»:</strong> síntesis contemporánea, arreglos orquestales y el pulso de la trutruka y la pifilka.</li>
+                                        <li><strong>«Few Moments»:</strong> piano minimalista suspendido en mantos de sintetizadores.</li>
+                                        <li><strong>«Elba Bewildered (From Elba &amp; Iris)»:</strong> carácter incidental y cinematográfico con cuerdas dramáticas.</li>
+                                        <li><strong>«Kauyeken (Being at Home)»:</strong> refugio íntimo y subgraves que evocan la densidad del viento austral.</li>
+                                    </ul>
+
+                                    <h5>Créditos</h5>
+                                    <ul>
+                                        <li>Composición, piano, sintetizadores, diseño sonoro, mezcla y masterización: Ruben Nievas.</li>
+                                        <li>Asistencia de arreglos orquestales: Jean-Christophe François.</li>
+                                        <li>Archivo de muestras antropológicas: Eduardo Pedro Coria (instrumentos registrados en Neuquén).</li>
+                                        <li>Arte de portada y fotografía: Lené Nievas.</li>
+                                        <li>Arte de concepto: Thomas Merkle (bitplant).</li>
+                                        <li>Producción: Ushuaia, Tierra del Fuego, Argentina. Configuración técnica basada en la arquitectura de producción de <em>CircumP0L4r</em>.</li>
+                                    </ul>
+                                </div>
+                            </details>
                         </div>
 
                         <div>
@@ -246,6 +364,8 @@
         <!-- SECCIÓN DE CONTACTO -->
         <section id="contact">
             <h2 data-aos="fade-right" data-es="CONTACTO" data-en="CONTACT" data-fr="CONTACT">CONTACTO</h2>
+            <p class="contact-invitation" data-es="¿Tenés un proyecto sonoro, musical o cultural en mente? Escribime y lo conversamos." data-en="Have a sound, music, or cultural project in mind? Get in touch and let's talk." data-fr="Vous avez un projet sonore, musical ou culturel en tête ? Écrivez-moi pour en parler.">¿Tenés un proyecto sonoro, musical o cultural en mente? Escribime y lo conversamos.</p>
+            <a class="cta-link cta-link-primary contact-cta" href="mailto:ruben_nievas@me.com?subject=Consulta%20por%20un%20proyecto" data-es="Escribime sobre tu proyecto" data-en="Tell me about your project" data-fr="Parlez-moi de votre projet">Escribime sobre tu proyecto</a>
             <p style="font-weight: 300; color: #ccc;">GitHub: <a href="https://github.com/Ni3v4s" target="_blank" rel="noopener noreferrer" class="cv-link">github.com/Ni3v4s</a> | Mail: <a href="mailto:ruben_nievas@me.com" class="cv-link">ruben_nievas@me.com</a></p>
         </section>
     </main>
@@ -264,6 +384,7 @@
         }
 
         function setLanguage(lang) {
+            document.documentElement.lang = lang;
             document.querySelectorAll('.lang-btn').forEach(function (button) {
                 button.style.opacity = button.innerText.toLowerCase() === lang ? '1' : '0.5';
             });
@@ -271,6 +392,7 @@
             document.querySelectorAll('[data-' + lang + ']').forEach(function (element) {
                 element.innerText = element.getAttribute('data-' + lang);
             });
+            document.dispatchEvent(new Event('site-language-change'));
         }
 
         async function toggleCustomPlay(button) {
@@ -346,14 +468,41 @@
             });
         });
 
-        window.addEventListener('scroll', function () {
-            const headerText = document.getElementById('headerText');
-            if (!headerText) return;
+        const backgroundVideo = document.querySelector('.video-background');
+        if (backgroundVideo) {
+            backgroundVideo.addEventListener('timeupdate', function () {
+                const loopPoint = backgroundVideo.duration - 1;
+                if (Number.isFinite(loopPoint) && loopPoint > 0 && backgroundVideo.currentTime >= loopPoint) {
+                    backgroundVideo.currentTime = 0;
+                }
+            });
+        }
 
-            const isScrolled = window.scrollY > 150;
-            headerText.style.opacity = isScrolled ? '0' : '1';
-            headerText.style.pointerEvents = isScrolled ? 'none' : 'auto';
-        });
+        function updateHeaderOnScroll() {
+            const headerText = document.getElementById('headerText');
+            const fadeDistance = Math.max(150, window.innerHeight * 0.5);
+            const headerOpacity = Math.max(0, 1 - window.scrollY / fadeDistance);
+
+            if (headerText) {
+                headerText.style.opacity = headerOpacity;
+                headerText.style.pointerEvents = headerOpacity > 0.05 ? 'auto' : 'none';
+            }
+
+            const nav = document.querySelector('nav');
+            const fadeStart = nav ? nav.getBoundingClientRect().bottom : 80;
+            const sectionFadeDistance = Math.max(160, window.innerHeight * 0.25);
+            document.querySelectorAll(
+                '#biografia h2, #biografia .bio-text, #audio-showcase h2, #audio-showcase > p, #audio-showcase .custom-audio-card, #legacy h2, #legacy > div > div'
+            ).forEach(function (element) {
+                const bounds = element.getBoundingClientRect();
+                const centerY = bounds.top + bounds.height / 2;
+                const opacity = Math.min(1, Math.max(0, (centerY - fadeStart) / sectionFadeDistance));
+                element.style.setProperty('--scroll-fade', opacity);
+            });
+        }
+
+        window.addEventListener('scroll', updateHeaderOnScroll, { passive: true });
+        updateHeaderOnScroll();
     </script>
     <script src="script.js"></script>
 </body>
