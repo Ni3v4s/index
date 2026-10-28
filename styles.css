@@ -54,6 +54,7 @@ body {
     font-size: 0.7rem;
     letter-spacing: 0.5px;
     white-space: nowrap;
+    flex: 0 0 auto;
     cursor: pointer;
     transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
 }
@@ -105,7 +106,7 @@ nav {
 
 .lang-selector {
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: flex-end;
 }
 
@@ -446,5 +447,11 @@ audio::-webkit-media-controls-panel {
     #ambient-audio-toggle {
         padding: 5px 8px;
         font-size: 0.65rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #ambient-audio-toggle > span:not(.ambient-audio-icon) {
+        display: none;
     }
 }
