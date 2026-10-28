@@ -2,7 +2,7 @@
 (function () {
     'use strict';
 
-    const ambientTrack = new Audio('asset/audio/%237%20Instante%20del%20Mundo_EmiliaRamunda-2026.mp3');
+    const ambientTrack = new Audio('https://raw.githubusercontent.com/Ni3v4s/index/main/asset/audio/%237%20Instante%20del%20Mundo_EmiliaRamunda-2026.mp3');
     ambientTrack.loop = true;
     ambientTrack.volume = 0.2;
     ambientTrack.preload = 'none';
@@ -20,20 +20,18 @@
 
         const labels = ambientLabels[document.documentElement.lang] || ambientLabels.es;
         const isPlaying = !ambientTrack.paused;
+        const icon = ambientButton.querySelector('.ambient-audio-icon');
         ambientButton.setAttribute('aria-label', isPlaying ? labels.pause : labels.play);
         ambientButton.title = isPlaying ? labels.pause : labels.play;
         ambientButton.setAttribute('aria-pressed', String(isPlaying));
         ambientButton.classList.toggle('is-playing', isPlaying);
+        if (icon) icon.textContent = isPlaying ? '❚❚' : '▶';
     }
 
-    function injectAmbientControl() {
-        const languageSelector = document.querySelector('.lang-selector');
-        if (!languageSelector) return;
+    function bindAmbientControl() {
+        ambientButton = document.getElementById('ambient-audio-toggle');
+        if (!ambientButton) return;
 
-        ambientButton = document.createElement('button');
-        ambientButton.id = 'ambient-audio-toggle';
-        ambientButton.type = 'button';
-        ambientButton.textContent = '♫';
         ambientButton.addEventListener('click', function () {
             if (!ambientTrack.paused) {
                 ambientTrack.pause();
@@ -53,7 +51,6 @@
                 updateAmbientButton();
             });
         });
-        languageSelector.appendChild(ambientButton);
         updateAmbientButton();
     }
 
@@ -99,7 +96,7 @@
             });
             header.appendChild(btn);
         }
-        injectAmbientControl();
+        bindAmbientControl();
     }
 
     // Play a random click sound on every click of interactive elements

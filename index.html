@@ -55,12 +55,16 @@
             <span class="lang-btn active" onclick="setLanguage('es')" style="cursor: pointer; opacity: 1;">ES</span>
             <span class="lang-btn" onclick="setLanguage('en')" style="cursor: pointer; opacity: 0.5;">EN</span>
             <span class="lang-btn" onclick="setLanguage('fr')" style="cursor: pointer; opacity: 0.5;">FR</span>
+            <button type="button" class="ambient-audio-toggle" id="ambient-audio-toggle" aria-label="Activar música de fondo" aria-pressed="false">
+                <span class="ambient-audio-icon" aria-hidden="true">▶</span>
+                <span data-es="Música de fondo" data-en="Background music" data-fr="Musique de fond">Música de fondo</span>
+            </button>
         </div>
     </nav>
 
     <!-- HEADER / HERO CON VIDEO Y CITA DE BACON -->
     <header>
-        <video autoplay muted playsinline class="video-background">
+        <video autoplay muted loop playsinline class="video-background">
             <source src="ushuaia_otonal.mp4" type="video/mp4">
         </video>
         <div class="header-content" id="headerText">
@@ -123,7 +127,7 @@
                     <div class="custom-audio-controls" style="display: flex; align-items: center; gap: 12px; background: #111; padding: 6px 10px; border-radius: 3px; border: 1px solid #222;">
                         <button type="button" aria-label="Reproducir audio" onclick="toggleCustomPlay(this)" style="background: var(--accent); border: none; width: 28px; height: 28px; border-radius: 50%; color: #000; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: bold;">▶</button>
                         <input type="range" class="audio-progress" aria-label="Progreso del audio" value="0" min="0" max="100" style="flex-grow: 1; width: 100%; height: 3px; accent-color: var(--accent); cursor: pointer; background: #222;" oninput="seekAudio(this)">
-                        <audio preload="none" src="asset/audio/%231%20Theater%20scene.mp3" ontimeupdate="updateProgress(this)" onended="resetPlayer(this)"></audio>
+                        <audio preload="none" src="https://raw.githubusercontent.com/Ni3v4s/index/main/asset/audio/%231%20Theater%20scene.mp3" ontimeupdate="updateProgress(this)" onended="resetPlayer(this)"></audio>
                     </div>
                 </div>
 
@@ -142,7 +146,7 @@
                     <div class="custom-audio-controls" style="display: flex; align-items: center; gap: 12px; background: #111; padding: 6px 10px; border-radius: 3px; border: 1px solid #222;">
                         <button type="button" aria-label="Reproducir audio" onclick="toggleCustomPlay(this)" style="background: var(--accent); border: none; width: 28px; height: 28px; border-radius: 50%; color: #000; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: bold;">▶</button>
                         <input type="range" class="audio-progress" aria-label="Progreso del audio" value="0" min="0" max="100" style="flex-grow: 1; width: 100%; height: 3px; accent-color: var(--accent); cursor: pointer; background: #222;" oninput="seekAudio(this)">
-                        <audio preload="none" src="asset/audio/%232%20Theater%20scene.mp3" ontimeupdate="updateProgress(this)" onended="resetPlayer(this)"></audio>
+                        <audio preload="none" src="https://raw.githubusercontent.com/Ni3v4s/index/main/asset/audio/%232%20Theater%20scene.mp3" ontimeupdate="updateProgress(this)" onended="resetPlayer(this)"></audio>
                     </div>
                 </div>
 
@@ -161,7 +165,7 @@
                     <div class="custom-audio-controls" style="display: flex; align-items: center; gap: 12px; background: #111; padding: 6px 10px; border-radius: 3px; border: 1px solid #222;">
                         <button type="button" aria-label="Reproducir audio" onclick="toggleCustomPlay(this)" style="background: var(--accent); border: none; width: 28px; height: 28px; border-radius: 50%; color: #000; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: bold;">▶</button>
                         <input type="range" class="audio-progress" aria-label="Progreso del audio" value="0" min="0" max="100" style="flex-grow: 1; width: 100%; height: 3px; accent-color: var(--accent); cursor: pointer; background: #222;" oninput="seekAudio(this)">
-                        <audio preload="none" src="asset/audio/%233%20Ori%CC%81genes.mp3" ontimeupdate="updateProgress(this)" onended="resetPlayer(this)"></audio>
+                        <audio preload="none" src="https://raw.githubusercontent.com/Ni3v4s/index/main/asset/audio/%233%20Or%C3%ADgenes.mp3" ontimeupdate="updateProgress(this)" onended="resetPlayer(this)"></audio>
                     </div>
                 </div>
 
@@ -180,7 +184,7 @@
                     <div class="custom-audio-controls" style="display: flex; align-items: center; gap: 12px; background: #111; padding: 6px 10px; border-radius: 3px; border: 1px solid #222;">
                         <button type="button" aria-label="Reproducir audio" onclick="toggleCustomPlay(this)" style="background: var(--cakewalk-red); border: none; width: 28px; height: 28px; border-radius: 50%; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.7rem;">▶</button>
                         <input type="range" class="audio-progress" aria-label="Progreso del audio" value="0" min="0" max="100" style="flex-grow: 1; width: 100%; height: 3px; accent-color: var(--cakewalk-red); cursor: pointer; background: #222;" oninput="seekAudio(this)">
-                        <audio preload="none" src="asset/audio/%234Field%20Recordings%20%C2%B7%20Sonido%20Directo%20%26%20Tratamiento%20Acu%CC%81stico.mp3" ontimeupdate="updateProgress(this)" onended="resetPlayer(this)"></audio>
+                        <audio preload="none" src="https://raw.githubusercontent.com/Ni3v4s/index/main/asset/audio/%234Field%20Recordings%20%C2%B7%20Sonido%20Directo%20%26%20Tratamiento%20Ac%C3%BAstico.mp3" ontimeupdate="updateProgress(this)" onended="resetPlayer(this)"></audio>
                     </div>
                 </div>
 
@@ -199,7 +203,7 @@
                     <div class="custom-audio-controls" style="display: flex; align-items: center; gap: 12px; background: #111; padding: 6px 10px; border-radius: 3px; border: 1px solid #222;">
                         <button type="button" aria-label="Reproducir audio" onclick="toggleCustomPlay(this)" style="background: var(--accent); border: none; width: 28px; height: 28px; border-radius: 50%; color: #000; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: bold;">▶</button>
                         <input type="range" class="audio-progress" aria-label="Progreso del audio" value="0" min="0" max="100" style="flex-grow: 1; width: 100%; height: 3px; accent-color: var(--accent); cursor: pointer; background: #222;" oninput="seekAudio(this)">
-                        <audio preload="none" src="asset/audio/%235%20comedia_manuelita_daniel%20romano.mp3" ontimeupdate="updateProgress(this)" onended="resetPlayer(this)"></audio>
+                        <audio preload="none" src="https://raw.githubusercontent.com/Ni3v4s/index/main/asset/audio/%235%20comedia_manuelita_daniel%20romano.mp3" ontimeupdate="updateProgress(this)" onended="resetPlayer(this)"></audio>
                     </div>
                 </div>
 
@@ -218,7 +222,7 @@
                     <div class="custom-audio-controls" style="display: flex; align-items: center; gap: 12px; background: #111; padding: 6px 10px; border-radius: 3px; border: 1px solid #222;">
                         <button type="button" aria-label="Reproducir audio" onclick="toggleCustomPlay(this)" style="background: var(--accent); border: none; width: 28px; height: 28px; border-radius: 50%; color: #000; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: bold;">▶</button>
                         <input type="range" class="audio-progress" aria-label="Progreso del audio" value="0" min="0" max="100" style="flex-grow: 1; width: 100%; height: 3px; accent-color: var(--accent); cursor: pointer; background: #222;" oninput="seekAudio(this)">
-                        <audio preload="none" src="asset/audio/%236%20comedia_mi_caballito_arreglo-2027.mp3" ontimeupdate="updateProgress(this)" onended="resetPlayer(this)"></audio>
+                        <audio preload="none" src="https://raw.githubusercontent.com/Ni3v4s/index/main/asset/audio/%236%20comedia_mi_caballito_arreglo-2027.mp3" ontimeupdate="updateProgress(this)" onended="resetPlayer(this)"></audio>
                     </div>
                 </div>
             </div>
@@ -256,103 +260,103 @@
                     <div style="padding: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 50px;">
                         
                         <div>
-                            <h4 style="color: var(--cakewalk-red); text-transform: uppercase; font-size: 0.8rem; border-bottom: 1px solid #333; padding-bottom: 10px; letter-spacing: 2px;">Discografía & Premios</h4>
-                            <ul style="list-style: none; padding: 20px 0 0 0; font-size: 0.85rem; line-height: 1.8;">
-                                <li>2024: <strong>Imaginario</strong> — Instantes Sur Producciones.</li>
-                                <li>2022: <strong>Tales</strong> — Instantes Sur Producciones.</li>
-                                <li>2020: <strong>Confinement / Dawdled</strong> — Arte y diseño de tapa: Horacio Lorente.</li>
-                                <li>2019: <strong>CircumP0L4r</strong> — Fotografía y diseño: Ruben Nievas.</li>
-                                <li>2016: <strong>Sketches (Piano)</strong> — Arte y diseño de tapa: Horacio Lorente.</li>
-                                <li>2007: <strong>Antártida (rgc:audio Stack)</strong></li>
-                                <li>2004: <strong>Frozen Dreams</strong></li>
+                            <h4 data-es="Discografía &amp; Premios" data-en="Discography &amp; Awards" data-fr="Discographie &amp; distinctions" style="color: var(--cakewalk-red); text-transform: uppercase; font-size: 0.8rem; border-bottom: 1px solid #333; padding-bottom: 10px; letter-spacing: 2px;">Discografía &amp; Premios</h4>
+                            <ul class="discography-list">
+                                <li data-es="2024: Imaginario — Instantes Sur Producciones." data-en="2024: Imaginario — Instantes Sur Producciones." data-fr="2024 : Imaginario — Instantes Sur Producciones."><strong>2024: Imaginario</strong> — Instantes Sur Producciones.</li>
+                                <li data-es="2022: Tales — Instantes Sur Producciones." data-en="2022: Tales — Instantes Sur Producciones." data-fr="2022 : Tales — Instantes Sur Producciones."><strong>2022: Tales</strong> — Instantes Sur Producciones.</li>
+                                <li data-es="2020: Confinement / Dawdled — Arte y diseño de tapa: Horacio Lorente." data-en="2020: Confinement / Dawdled — Cover art and design: Horacio Lorente." data-fr="2020 : Confinement / Dawdled — Illustration et conception de la pochette : Horacio Lorente."><strong>2020: Confinement / Dawdled</strong> — Arte y diseño de tapa: Horacio Lorente.</li>
+                                <li data-es="2019: CircumP0L4r — Fotografía y diseño: Ruben Nievas." data-en="2019: CircumP0L4r — Photography and design: Ruben Nievas." data-fr="2019 : CircumP0L4r — Photographie et conception : Ruben Nievas."><strong>2019: CircumP0L4r</strong> — Fotografía y diseño: Ruben Nievas.</li>
+                                <li data-es="2016: Sketches (Piano) — Arte y diseño de tapa: Horacio Lorente." data-en="2016: Sketches (Piano) — Cover art and design: Horacio Lorente." data-fr="2016 : Sketches (Piano) — Illustration et conception de la pochette : Horacio Lorente."><strong>2016: Sketches (Piano)</strong> — Arte y diseño de tapa: Horacio Lorente.</li>
+                                <li data-es="2007: Antártida (rgc:audio Stack)" data-en="2007: Antártida (rgc:audio Stack)" data-fr="2007 : Antártida (rgc:audio Stack)"><strong>2007: Antártida (rgc:audio Stack)</strong></li>
+                                <li data-es="2004: Frozen Dreams" data-en="2004: Frozen Dreams" data-fr="2004 : Frozen Dreams"><strong>2004: Frozen Dreams</strong></li>
                             </ul>
                             <div class="streaming-links" aria-label="Escuchar el catálogo de Ruben Nievas">
-                                <span>Escuchar el catálogo:</span>
+                                <span data-es="Escuchar el catálogo:" data-en="Listen to the catalog:" data-fr="Écouter le catalogue :">Escuchar el catálogo:</span>
                                 <a class="cv-link" href="https://music.apple.com/ar/artist/ruben-nievas/859693487?l=en-GB" target="_blank" rel="noopener noreferrer">Apple Music</a>
                                 <a class="cv-link" href="https://tidal.com/artist/5552263/u" target="_blank" rel="noopener noreferrer">Tidal</a>
                                 <a class="cv-link" href="https://open.spotify.com/artist/4gftDU20natF8YOuUCCzZ5?si=j-5wgzTVQNGaPeygLbGdaw" target="_blank" rel="noopener noreferrer">Spotify</a>
                             </div>
                             <details class="album-detail">
-                                <summary>IMAGINARIO (2024) — FICHA Y CONCEPTO</summary>
+                                <summary data-es="IMAGINARIO (2024) — FICHA TÉCNICA Y CONCEPTO" data-en="IMAGINARIO (2024) — TECHNICAL SHEET & CONCEPT" data-fr="IMAGINARIO (2024) — FICHE TECHNIQUE & CONCEPT">IMAGINARIO (2024) — FICHA TÉCNICA Y CONCEPTO</summary>
                                 <div class="album-detail-content">
-                                    <p class="album-meta">Lanzamiento: principios de 2024 · Álbum / antología incidental · 30 minutos · Instantes Sur Producciones</p>
-                                    <p><em>Imaginario</em> es una síntesis antológica de música compuesta por Ruben Nievas para expresiones escénicas y audiovisuales de Tierra del Fuego, entre ellas teatro, cine independiente y videoarte. Entre el piano clásico, la música incidental y el <em>classical crossover</em>, funciona como una galería sonora introspectiva, minimalista y envolvente.</p>
+                                    <p class="album-meta" data-es="Lanzamiento: principios de 2024 · Álbum / antología incidental · 30 minutos · Instantes Sur Producciones" data-en="Release: early 2024 · Album / incidental music anthology · 30 minutes · Instantes Sur Producciones" data-fr="Sortie : début 2024 · Album / anthologie de musique incidente · 30 minutes · Instantes Sur Producciones">Lanzamiento: principios de 2024 · Álbum / antología incidental · 30 minutos · Instantes Sur Producciones</p>
+                                    <p data-es="Imaginario es una síntesis antológica de música compuesta por Ruben Nievas para expresiones escénicas y audiovisuales de Tierra del Fuego, entre ellas teatro, cine independiente y videoarte. Entre el piano clásico, la música incidental y el classical crossover, funciona como una galería sonora introspectiva, minimalista y envolvente." data-en="Imaginario is an anthology of music Ruben Nievas composed for performing arts and audiovisual works from Tierra del Fuego, including theatre, independent film and video art. Moving between classical piano, incidental music and classical crossover, it forms an introspective, minimalist and immersive gallery of sound." data-fr="Imaginario est une anthologie de musiques composées par Ruben Nievas pour les arts de la scène et des œuvres audiovisuelles de Terre de Feu, notamment le théâtre, le cinéma indépendant et le vidéo-art. Entre piano classique, musique incidente et classical crossover, l’album forme une galerie sonore introspective, minimaliste et immersive."><em>Imaginario</em> es una síntesis antológica de música compuesta por Ruben Nievas para expresiones escénicas y audiovisuales de Tierra del Fuego, entre ellas teatro, cine independiente y videoarte. Entre el piano clásico, la música incidental y el <em>classical crossover</em>, funciona como una galería sonora introspectiva, minimalista y envolvente.</p>
 
-                                    <h5>Crear mundos en el aire</h5>
-                                    <p>El título alude al proceso de composición incidental de Nievas: a partir de textos dramáticos y conversaciones con directores sobre la psicología de los personajes, imagina el ritmo de los actores, la luz y la atmósfera de una puesta antes de que existan la escenografía, el vestuario o los ensayos. El álbum celebra esa intuición y la posibilidad de construir universos sonoros antes de que se enciendan las luces del teatro.</p>
+                                    <h5 data-es="Crear mundos en el aire" data-en="Creating worlds in the air" data-fr="Créer des mondes dans l’air">Crear mundos en el aire</h5>
+                                    <p data-es="El título alude al proceso de composición incidental de Nievas: a partir de textos dramáticos y conversaciones con directores sobre la psicología de los personajes, imagina el ritmo de los actores, la luz y la atmósfera de una puesta antes de que existan la escenografía, el vestuario o los ensayos. El álbum celebra esa intuición y la posibilidad de construir universos sonoros antes de que se enciendan las luces del teatro." data-en="The title reflects Nievas's approach to incidental composition. From scripts and conversations with directors about character psychology, he imagines the actors' rhythm, lighting and stage atmosphere before scenery, costumes or rehearsals exist. The album celebrates this intuition: building entire sound worlds before the theatre lights come on." data-fr="Le titre évoque la méthode de composition incidente de Nievas. À partir de textes dramatiques et d’échanges avec les metteurs en scène sur la psychologie des personnages, il imagine le rythme des acteurs, la lumière et l’atmosphère avant les décors, les costumes ou les répétitions. L’album célèbre cette intuition : créer des univers sonores avant que les lumières du théâtre ne s’allument.">El título alude al proceso de composición incidental de Nievas: a partir de textos dramáticos y conversaciones con directores sobre la psicología de los personajes, imagina el ritmo de los actores, la luz y la atmósfera de una puesta antes de que existan la escenografía, el vestuario o los ensayos. El álbum celebra esa intuición y la posibilidad de construir universos sonoros antes de que se enciendan las luces del teatro.</p>
 
-                                    <h5>Música tras las historias</h5>
+                                    <h5 data-es="Música tras las historias" data-en="Music behind the stories" data-fr="La musique derrière les histoires">Música tras las historias</h5>
                                     <ul>
-                                        <li><strong><em>Amalfi</em>:</strong> «Tejiendo imágenes», «Tema de Ascasubi», «Carmela» y «Tema de Braun» nacieron para la obra teatral del dramaturgo Enrique Papatino.</li>
-                                        <li><strong><em>Disforia</em>:</strong> «Bailé con mi sombra» fue creada para el cortometraje de la realizadora Lené Nievas.</li>
-                                        <li><strong>Artes visuales y performance:</strong> «Sin» musicalizó el proyecto de videoarte de Laura Aguilera Mendieta; «Afrodita» fue concebida para la obra <em>Torta de Chocolate</em>, de Pedro Romero.</li>
+                                        <li data-es="Amalfi: «Tejiendo imágenes», «Tema de Ascasubi», «Carmela» y «Tema de Braun» nacieron para la obra teatral del dramaturgo Enrique Papatino." data-en="Amalfi: “Tejiendo imágenes,” “Tema de Ascasubi,” “Carmela” and “Tema de Braun” were written for playwright Enrique Papatino's stage work Amalfi." data-fr="Amalfi : « Tejiendo imágenes », « Tema de Ascasubi », « Carmela » et « Tema de Braun » ont été composés pour la pièce Amalfi du dramaturge Enrique Papatino."><strong><em>Amalfi</em>:</strong> «Tejiendo imágenes», «Tema de Ascasubi», «Carmela» y «Tema de Braun» nacieron para la obra teatral del dramaturgo Enrique Papatino.</li>
+                                        <li data-es="Disforia: «Bailé con mi sombra» fue creada para el cortometraje de la realizadora Lené Nievas." data-en="Disforia: “Bailé con mi sombra” was composed for filmmaker Lené Nievas's short film." data-fr="Disforia : « Bailé con mi sombra » a été composé pour le court métrage de la réalisatrice Lené Nievas."><strong><em>Disforia</em>:</strong> «Bailé con mi sombra» fue creada para el cortometraje de la realizadora Lené Nievas.</li>
+                                        <li data-es="Artes visuales y performance: «Sin» musicalizó el proyecto de videoarte de Laura Aguilera Mendieta; «Afrodita» fue concebida para la obra Torta de Chocolate, de Pedro Romero." data-en="Visual arts and performance: “Sin” was composed for Laura Aguilera Mendieta's video art project, while “Afrodita” was written for Pedro Romero's play Torta de Chocolate." data-fr="Arts visuels et performance : « Sin » accompagne le projet vidéo de Laura Aguilera Mendieta ; « Afrodita » a été conçue pour la pièce Torta de Chocolate de Pedro Romero."><strong>Artes visuales y performance:</strong> «Sin» musicalizó el proyecto de videoarte de Laura Aguilera Mendieta; «Afrodita» fue concebida para la obra <em>Torta de Chocolate</em>, de Pedro Romero.</li>
                                     </ul>
 
-                                    <h5>El sello del fin del mundo</h5>
-                                    <p>La geografía austral atraviesa la textura del disco. Piezas instrumentales como «Oscuridad Otoñal» y «Terrestre» evocan el aislamiento, el viento, el frío y los horizontes infinitos del sur argentino.</p>
+                                    <h5 data-es="El sello del fin del mundo" data-en="The signature of the end of the world" data-fr="L’empreinte du bout du monde">El sello del fin del mundo</h5>
+                                    <p data-es="La geografía austral atraviesa la textura del disco. Piezas instrumentales como «Oscuridad Otoñal» y «Terrestre» evocan el aislamiento, el viento, el frío y los horizontes infinitos del sur argentino." data-en="The southern landscape runs through the album's sound. Instrumental pieces such as “Oscuridad Otoñal” and “Terrestre” evoke isolation, wind, cold and the endless horizons of southern Argentina." data-fr="La géographie australe imprègne la texture de l’album. Des pièces instrumentales comme « Oscuridad Otoñal » et « Terrestre » évoquent l’isolement, le vent, le froid et les horizons infinis du sud de l’Argentine.">La geografía austral atraviesa la textura del disco. Piezas instrumentales como «Oscuridad Otoñal» y «Terrestre» evocan el aislamiento, el viento, el frío y los horizontes infinitos del sur argentino.</p>
 
-                                    <h5>Créditos</h5>
+                                    <h5 data-es="Ficha técnica y producción" data-en="Technical sheet and production" data-fr="Fiche technique et production">Ficha técnica y producción</h5>
                                     <ul>
-                                        <li>Composición, piano, sintetizadores y diseño sonoro: Ruben Nievas.</li>
-                                        <li>Diseño y arte de portada: Victoria Lerario.</li>
-                                        <li>Fotografía: Pablo Fabro.</li>
-                                        <li>Mezcla y masterización: Ruben Nievas.</li>
-                                        <li>Producción: Ushuaia, Tierra del Fuego, Argentina. Configuración técnica basada en la arquitectura de producción de <em>CircumP0L4r</em> y <em>Tales</em>.</li>
+                                        <li data-es="Composición, piano, sintetizadores y diseño sonoro: Ruben Nievas." data-en="Composition, piano, synthesizers and sound design: Ruben Nievas." data-fr="Composition, piano, synthétiseurs et design sonore : Ruben Nievas.">Composición, piano, sintetizadores y diseño sonoro: Ruben Nievas.</li>
+                                        <li data-es="Diseño y arte de portada: Victoria Lerario." data-en="Cover design and artwork: Victoria Lerario." data-fr="Conception et illustration de la couverture : Victoria Lerario.">Diseño y arte de portada: Victoria Lerario.</li>
+                                        <li data-es="Fotografía: Pablo Fabro." data-en="Photography: Pablo Fabro." data-fr="Photographie : Pablo Fabro.">Fotografía: Pablo Fabro.</li>
+                                        <li data-es="Mezcla y masterización: Ruben Nievas." data-en="Mixing and mastering: Ruben Nievas." data-fr="Mixage et mastering : Ruben Nievas.">Mezcla y masterización: Ruben Nievas.</li>
+                                        <li data-es="Producción: Ushuaia, Tierra del Fuego, Argentina. Configuración técnica basada en la arquitectura de producción de CircumP0L4r y Tales." data-en="Production: Ushuaia, Tierra del Fuego, Argentina. Technical setup based on the production architecture used for CircumP0L4r and Tales." data-fr="Production : Ushuaia, Terre de Feu, Argentine. Configuration technique fondée sur l’architecture de production de CircumP0L4r et Tales.">Producción: Ushuaia, Tierra del Fuego, Argentina. Configuración técnica basada en la arquitectura de producción de <em>CircumP0L4r</em> y <em>Tales</em>.</li>
                                     </ul>
                                 </div>
                             </details>
                             <details class="album-detail">
-                                <summary>TALES (2022) — FICHA Y CONCEPTO</summary>
+                                <summary data-es="TALES (2022) — FICHA TÉCNICA Y CONCEPTO" data-en="TALES (2022) — TECHNICAL SHEET & CONCEPT" data-fr="TALES (2022) — FICHE TECHNIQUE & CONCEPT">TALES (2022) — FICHA TÉCNICA Y CONCEPTO</summary>
                                 <div class="album-detail-content">
-                                    <p class="album-meta">Lanzamiento: 1 de diciembre de 2022 · 9 piezas · 42 minutos</p>
-                                    <p><em>Tales</em> (Historias o Cuentos) es un viaje sonoro narrativo entre la música clásica contemporánea, la música cinemática, el jazz de vanguardia y el ambient. Concebido como una colección de bandas sonoras para relatos íntimos y regionales, combina el piano acústico con arreglos de sintetizadores y diseño sonoro para narrar sin palabras.</p>
+                                    <p class="album-meta" data-es="Lanzamiento: 1 de diciembre de 2022 · 9 piezas · 42 minutos · Instantes Sur Producciones" data-en="Release: 1 December 2022 · 9 tracks · 42 minutes · Instantes Sur Producciones" data-fr="Sortie : 1er décembre 2022 · 9 morceaux · 42 minutes · Instantes Sur Producciones">Lanzamiento: 1 de diciembre de 2022 · 9 piezas · 42 minutos · Instantes Sur Producciones</p>
+                                    <p data-es="Tales (Historias o Cuentos) es un viaje sonoro narrativo entre la música clásica contemporánea, la música cinemática, el jazz de vanguardia y el ambient. Concebido como una colección de bandas sonoras para relatos íntimos y regionales, combina el piano acústico con arreglos de sintetizadores y diseño sonoro para narrar sin palabras." data-en="Tales (Stories or Tales) is a narrative sound journey between contemporary classical, cinematic music, avant-garde jazz and ambient. Conceived as a collection of soundtracks for intimate, regional stories, it combines acoustic piano with sophisticated synthesizer arrangements and sound design to tell complex stories without words." data-fr="Tales (Histoires ou contes) est un voyage sonore narratif entre musique classique contemporaine, musique cinématique, jazz d’avant-garde et ambient. Conçu comme une collection de bandes originales pour des récits intimes et régionaux, l’album associe piano acoustique, arrangements de synthétiseurs et design sonore pour raconter sans paroles."> <em>Tales</em> (Historias o Cuentos) es un viaje sonoro narrativo entre la música clásica contemporánea, la música cinemática, el jazz de vanguardia y el ambient. Concebido como una colección de bandas sonoras para relatos íntimos y regionales, combina el piano acústico con arreglos de sintetizadores y diseño sonoro para narrar sin palabras.</p>
 
-                                    <h5>Identidad sonora y percepción auditiva</h5>
-                                    <p>La estética del álbum está moldeada por la hipoacusia y el síndrome de Menière de Ruben Nievas. El proceso compositivo trata el silencio como una nota: evita la saturación y permite que cada frecuencia respire. El registro grave del piano y los subgraves sintéticos dan al sonido una dimensión física, evocando el viento austral y la inmensidad del fin del mundo. Delays y procesamiento estéreo crean espacios amplios donde las notas se extinguen lentamente, mientras que acordes suspendidos y formas libres —con influencias de Lyle Mays— mutan como el paisaje patagónico.</p>
+                                    <h5 data-es="Identidad sonora y percepción auditiva" data-en="Sound identity and auditory perception" data-fr="Identité sonore et perception auditive">Identidad sonora y percepción auditiva</h5>
+                                    <p data-es="La estética del álbum está moldeada por la hipoacusia y el síndrome de Menière de Ruben Nievas. El proceso compositivo trata el silencio como una nota: evita la saturación y permite que cada frecuencia respire. El registro grave del piano y los subgraves sintéticos dan al sonido una dimensión física, evocando el viento austral y la inmensidad del fin del mundo. Delays y procesamiento estéreo crean espacios amplios donde las notas se extinguen lentamente, mientras que acordes suspendidos y formas libres —con influencias de Lyle Mays— mutan como el paisaje patagónico." data-en="The album's aesthetic is shaped by Ruben Nievas's hearing loss and Ménière's syndrome. His compositional process treats silence as a musical note, avoiding saturation and letting every frequency breathe. Piano bass notes and synthetic sub-bass make sound physical, evoking the southern wind and the vastness of the end of the world. Delays and stereo processing create spacious environments where notes fade slowly; suspended chords and free forms, influenced by Lyle Mays, evolve like the Patagonian landscape." data-fr="L’esthétique de l’album est profondément marquée par la surdité partielle et le syndrome de Ménière de Ruben Nievas. Son processus de composition traite le silence comme une note, évite la saturation et laisse respirer chaque fréquence. Les graves du piano et les sous-graves synthétiques donnent au son une dimension physique, évoquant le vent austral et l’immensité du bout du monde. Delays et traitements stéréo créent de vastes espaces où les notes s’éteignent lentement ; des accords suspendus et des formes libres, influencés par Lyle Mays, évoluent comme le paysage patagonien.">La estética del álbum está moldeada por la hipoacusia y el síndrome de Menière de Ruben Nievas. El proceso compositivo trata el silencio como una nota: evita la saturación y permite que cada frecuencia respire. El registro grave del piano y los subgraves sintéticos dan al sonido una dimensión física, evocando el viento austral y la inmensidad del fin del mundo. Delays y procesamiento estéreo crean espacios amplios donde las notas se extinguen lentamente, mientras que acordes suspendidos y formas libres —con influencias de Lyle Mays— mutan como el paisaje patagónico.</p>
 
-                                    <h5>Instrumentos originarios y memoria sonora</h5>
-                                    <p>El tema <em>«Tales»</em> cruza sintetizadores cinemáticos con registros antropológicos realizados en los años noventa por el investigador y folclorista fueguino Eduardo Pedro Coria en una comunidad indígena de Neuquén. Coria cedió el archivo analógico a Nievas, quien digitalizó, limpió y procesó las muestras de trutruka, pifilka y cascahuillas. El resultado enlaza la vanguardia electrónica con raíces sonoras de la Patagonia originaria.</p>
+                                    <h5 data-es="Instrumentos originarios y memoria sonora" data-en="Indigenous instruments and sound memory" data-fr="Instruments autochtones et mémoire sonore">Instrumentos originarios y memoria sonora</h5>
+                                    <p data-es="El tema «Tales» cruza sintetizadores cinemáticos con registros antropológicos realizados en los años noventa por el investigador y folclorista fueguino Eduardo Pedro Coria en una comunidad indígena de Neuquén. Coria cedió el archivo analógico a Nievas, quien digitalizó, limpió y procesó las muestras de trutruka, pifilka y cascahuillas. El resultado enlaza la vanguardia electrónica con raíces sonoras de la Patagonia originaria." data-en="The title track “Tales” brings cinematic synthesizers together with anthropological recordings made in the 1990s by Tierra del Fuego researcher and folklorist Eduardo Pedro Coria in an Indigenous community in Neuquén. Coria later entrusted the analog archive to Nievas, who digitized, cleaned and processed recordings of trutruka, pifilka and cascahuillas, connecting electronic avant-garde with the ancestral sound roots of Patagonia." data-fr="Le morceau-titre « Tales » mêle synthétiseurs cinématiques et enregistrements anthropologiques réalisés dans les années 1990 par le chercheur et folkloriste fuégien Eduardo Pedro Coria auprès d’une communauté autochtone de Neuquén. Coria a ensuite confié ces archives analogiques à Nievas, qui a numérisé, nettoyé et traité les sons de trutruka, pifilka et cascahuillas, reliant l’avant-garde électronique aux racines sonores ancestrales de la Patagonie.">El tema <em>«Tales»</em> cruza sintetizadores cinemáticos con registros antropológicos realizados en los años noventa por el investigador y folclorista fueguino Eduardo Pedro Coria en una comunidad indígena de Neuquén. Coria cedió el archivo analógico a Nievas, quien digitalizó, limpió y procesó las muestras de trutruka, pifilka y cascahuillas. El resultado enlaza la vanguardia electrónica con raíces sonoras de la Patagonia originaria.</p>
 
-                                    <h5>Colaboraciones y dimensión audiovisual</h5>
-                                    <p>El director y arreglista francés Jean-Christophe François colaboró a distancia en la tímbrica orquestal de cuerdas y vientos sintéticos. Su aporte se aprecia en <em>«Elba Bewildered»</em>, del proyecto audiovisual <em>From Elba &amp; Iris</em>. <em>«Kauyeken (Being at Home)»</em> —«hogar» en una lengua de los pueblos originarios, según el concepto del proyecto— traduce el aislamiento, el turbal y el clima fueguino en texturas de síntesis de evolución lenta y acordes espaciados.</p>
+                                    <h5 data-es="Colaboraciones y dimensión audiovisual" data-en="Collaborations and audiovisual dimension" data-fr="Collaborations et dimension audiovisuelle">Colaboraciones y dimensión audiovisual</h5>
+                                    <p data-es="El director y arreglista francés Jean-Christophe François colaboró a distancia en la tímbrica orquestal de cuerdas y vientos sintéticos. Su aporte se aprecia en «Elba Bewildered», del proyecto audiovisual From Elba &amp; Iris. «Kauyeken (Being at Home)» —«hogar» en una lengua de los pueblos originarios, según el concepto del proyecto— traduce el aislamiento, el turbal y el clima fueguino en texturas de síntesis de evolución lenta y acordes espaciados." data-en="French director and arranger Jean-Christophe François collaborated remotely on the orchestral timbres of the synthetic strings and winds. His contribution can be heard in “Elba Bewildered,” part of the audiovisual project From Elba &amp; Iris. “Kauyeken (Being at Home)” translates Fuegian isolation, peat bogs and climate into slowly evolving synth textures and spacious chords." data-fr="Le réalisateur et arrangeur français Jean-Christophe François a collaboré à distance au travail des timbres orchestraux de cordes et de vents synthétiques. Son apport s’entend dans « Elba Bewildered », issu du projet audiovisuel From Elba &amp; Iris. « Kauyeken (Being at Home) » traduit l’isolement, les tourbières et le climat fuégiens en textures de synthèse à évolution lente et en accords espacés.">El director y arreglista francés Jean-Christophe François colaboró a distancia en la tímbrica orquestal de cuerdas y vientos sintéticos. Su aporte se aprecia en <em>«Elba Bewildered»</em>, del proyecto audiovisual <em>From Elba &amp; Iris</em>. <em>«Kauyeken (Being at Home)»</em> —«hogar» en una lengua de los pueblos originarios, según el concepto del proyecto— traduce el aislamiento, el turbal y el clima fueguino en texturas de síntesis de evolución lenta y acordes espaciados.</p>
 
-                                    <h5>Cuatro momentos del álbum</h5>
+                                    <h5 data-es="Cuatro momentos del álbum" data-en="Four highlights from the album" data-fr="Quatre moments de l’album">Cuatro momentos del álbum</h5>
                                     <ul>
-                                        <li><strong>«Tales»:</strong> síntesis contemporánea, arreglos orquestales y el pulso de la trutruka y la pifilka.</li>
-                                        <li><strong>«Few Moments»:</strong> piano minimalista suspendido en mantos de sintetizadores.</li>
-                                        <li><strong>«Elba Bewildered (From Elba &amp; Iris)»:</strong> carácter incidental y cinematográfico con cuerdas dramáticas.</li>
-                                        <li><strong>«Kauyeken (Being at Home)»:</strong> refugio íntimo y subgraves que evocan la densidad del viento austral.</li>
+                                        <li data-es="«Tales»: síntesis contemporánea, arreglos orquestales y el pulso de la trutruka y la pifilka." data-en="“Tales”: contemporary synthesis, orchestral arrangements and the pulse of the trutruka and pifilka." data-fr="« Tales » : synthèse contemporaine, arrangements orchestraux et pulsation de la trutruka et de la pifilka."><strong>«Tales»:</strong> síntesis contemporánea, arreglos orquestales y el pulso de la trutruka y la pifilka.</li>
+                                        <li data-es="«Few Moments»: piano minimalista suspendido en mantos de sintetizadores." data-en="“Few Moments”: minimalist piano suspended in layers of synthesizer pads." data-fr="« Few Moments » : piano minimaliste suspendu dans des nappes de synthétiseurs."><strong>«Few Moments»:</strong> piano minimalista suspendido en mantos de sintetizadores.</li>
+                                        <li data-es="«Elba Bewildered (From Elba &amp; Iris)»: carácter incidental y cinematográfico con cuerdas dramáticas." data-en="“Elba Bewildered (From Elba &amp; Iris)”: cinematic incidental music driven by dramatic strings." data-fr="« Elba Bewildered (From Elba &amp; Iris) » : musique incidente cinématique portée par des cordes dramatiques."><strong>«Elba Bewildered (From Elba &amp; Iris)»:</strong> carácter incidental y cinematográfico con cuerdas dramáticas.</li>
+                                        <li data-es="«Kauyeken (Being at Home)»: refugio íntimo y subgraves que evocan la densidad del viento austral." data-en="“Kauyeken (Being at Home)”: an intimate refuge, with sub-bass evoking the weight of the southern wind." data-fr="« Kauyeken (Being at Home) » : un refuge intime, avec des sous-graves évoquant la densité du vent austral."><strong>«Kauyeken (Being at Home)»:</strong> refugio íntimo y subgraves que evocan la densidad del viento austral.</li>
                                     </ul>
 
-                                    <h5>Créditos</h5>
+                                    <h5 data-es="Ficha técnica y producción" data-en="Technical sheet and production" data-fr="Fiche technique et production">Ficha técnica y producción</h5>
                                     <ul>
-                                        <li>Composición, piano, sintetizadores, diseño sonoro, mezcla y masterización: Ruben Nievas.</li>
-                                        <li>Asistencia de arreglos orquestales: Jean-Christophe François.</li>
-                                        <li>Archivo de muestras antropológicas: Eduardo Pedro Coria (instrumentos registrados en Neuquén).</li>
-                                        <li>Arte de portada y fotografía: Lené Nievas.</li>
-                                        <li>Arte de concepto: Thomas Merkle (bitplant).</li>
-                                        <li>Producción: Ushuaia, Tierra del Fuego, Argentina. Configuración técnica basada en la arquitectura de producción de <em>CircumP0L4r</em>.</li>
+                                        <li data-es="Composición, piano, sintetizadores, diseño sonoro, mezcla y masterización: Ruben Nievas." data-en="Composition, piano, synthesizers, sound design, mixing and mastering: Ruben Nievas." data-fr="Composition, piano, synthétiseurs, design sonore, mixage et mastering : Ruben Nievas.">Composición, piano, sintetizadores, diseño sonoro, mezcla y masterización: Ruben Nievas.</li>
+                                        <li data-es="Asistencia de arreglos orquestales: Jean-Christophe François." data-en="Orchestral arrangement assistance: Jean-Christophe François." data-fr="Assistance aux arrangements orchestraux : Jean-Christophe François.">Asistencia de arreglos orquestales: Jean-Christophe François.</li>
+                                        <li data-es="Archivo de muestras antropológicas: Eduardo Pedro Coria (instrumentos registrados en Neuquén)." data-en="Anthropological sound archive: Eduardo Pedro Coria (instruments recorded in Neuquén)." data-fr="Archives de sons anthropologiques : Eduardo Pedro Coria (instruments enregistrés à Neuquén).">Archivo de muestras antropológicas: Eduardo Pedro Coria (instrumentos registrados en Neuquén).</li>
+                                        <li data-es="Arte de portada y fotografía: Lené Nievas." data-en="Cover artwork and photography: Lené Nievas." data-fr="Illustration de couverture et photographie : Lené Nievas.">Arte de portada y fotografía: Lené Nievas.</li>
+                                        <li data-es="Arte de concepto: Thomas Merkle (bitplant)." data-en="Concept art: Thomas Merkle (bitplant)." data-fr="Concept art : Thomas Merkle (bitplant).">Arte de concepto: Thomas Merkle (bitplant).</li>
+                                        <li data-es="Producción: Ushuaia, Tierra del Fuego, Argentina. Configuración técnica basada en la arquitectura de producción de CircumP0L4r." data-en="Production: Ushuaia, Tierra del Fuego, Argentina. Technical setup based on the production architecture used for CircumP0L4r." data-fr="Production : Ushuaia, Terre de Feu, Argentine. Configuration technique fondée sur l’architecture de production de CircumP0L4r.">Producción: Ushuaia, Tierra del Fuego, Argentina. Configuración técnica basada en la arquitectura de producción de <em>CircumP0L4r</em>.</li>
                                     </ul>
                                 </div>
                             </details>
                         </div>
 
                         <div>
-                            <h4 style="color: var(--cakewalk-red); text-transform: uppercase; font-size: 0.8rem; border-bottom: 1px solid #333; padding-bottom: 10px; letter-spacing: 2px;">Tecnología Musical</h4>
+                            <h4 data-es="Tecnología Musical" data-en="Music Technology" data-fr="Technologie musicale" style="color: var(--cakewalk-red); text-transform: uppercase; font-size: 0.8rem; border-bottom: 1px solid #333; padding-bottom: 10px; letter-spacing: 2px;">Tecnología Musical</h4>
                             <ul style="list-style: none; padding: 20px 0 0 0; font-size: 0.85rem; line-height: 1.8;">
-                                <li><strong>Apple (Frankfurt):</strong> Sound Designer Logic Pro.</li>
-                                <li><strong>Yamaha Japón:</strong> Soluciones Dante/MADI.</li>
-                                <li><strong>Cakewalk / rgc:audio:</strong> Beta Tester & Sound Designer.</li>
-                                <li><strong>Sonic Charge:</strong> Soundbanks para Synplant.</li>
+                                <li data-es="Apple (Frankfurt): Diseñador de sonido para Logic Pro." data-en="Apple (Frankfurt): Sound Designer for Logic Pro." data-fr="Apple (Francfort) : concepteur sonore pour Logic Pro."><strong>Apple (Frankfurt):</strong> Sound Designer Logic Pro.</li>
+                                <li data-es="Yamaha Japón: Soluciones Dante/MADI." data-en="Yamaha Japan: Dante/MADI solutions." data-fr="Yamaha Japon : solutions Dante/MADI."><strong>Yamaha Japón:</strong> Soluciones Dante/MADI.</li>
+                                <li data-es="Cakewalk / rgc:audio: Beta Tester y Sound Designer." data-en="Cakewalk / rgc:audio: Beta Tester &amp; Sound Designer." data-fr="Cakewalk / rgc:audio : bêta-testeur et concepteur sonore."><strong>Cakewalk / rgc:audio:</strong> Beta Tester &amp; Sound Designer.</li>
+                                <li data-es="Sonic Charge: Bancos de sonido para Synplant." data-en="Sonic Charge: Sound banks for Synplant." data-fr="Sonic Charge : banques de sons pour Synplant."><strong>Sonic Charge:</strong> Soundbanks para Synplant.</li>
                             </ul>
                         </div>
 
                         <div>
-                            <h4 style="color: var(--cakewalk-red); text-transform: uppercase; font-size: 0.8rem; border-bottom: 1px solid #333; padding-bottom: 10px; letter-spacing: 2px;">Gestión & Dirección</h4>
+                            <h4 data-es="Gestión &amp; Dirección" data-en="Management &amp; Direction" data-fr="Gestion &amp; direction" style="color: var(--cakewalk-red); text-transform: uppercase; font-size: 0.8rem; border-bottom: 1px solid #333; padding-bottom: 10px; letter-spacing: 2px;">Gestión &amp; Dirección</h4>
                             <ul style="list-style: none; padding: 20px 0 0 0; font-size: 0.85rem; line-height: 1.8;">
-                                <li><strong>Banda Municipal:</strong> Director (2000-03) / Arreglista (1994).</li>
-                                <li><strong>Cultura Municipal:</strong> Director Interino (2008).</li>
-                                <li><strong>Diseño Sonoro:</strong> "Volver a Malvinas", Obra "Orígenes".</li>
+                                <li data-es="Banda Municipal: Director (2000-03) / Arreglista (1994)." data-en="Municipal Band: Director (2000-03) / Arranger (1994)." data-fr="Orchestre municipal : directeur (2000-03) / arrangeur (1994)."><strong>Banda Municipal:</strong> Director (2000-03) / Arreglista (1994).</li>
+                                <li data-es="Cultura Municipal: Director Interino (2008)." data-en="Municipal Cultural Affairs: Acting Director (2008)." data-fr="Direction municipale de la culture : directeur par intérim (2008)."><strong>Cultura Municipal:</strong> Director Interino (2008).</li>
+                                <li data-es="Diseño Sonoro: «Volver a Malvinas», obra «Orígenes»." data-en="Sound Design: “Volver a Malvinas,” the play “Orígenes.”" data-fr="Design sonore : « Volver a Malvinas », pièce « Orígenes »."><strong>Diseño Sonoro:</strong> "Volver a Malvinas", Obra "Orígenes".</li>
                             </ul>
                         </div>
 
@@ -492,7 +496,7 @@
             const fadeStart = nav ? nav.getBoundingClientRect().bottom : 80;
             const sectionFadeDistance = Math.max(160, window.innerHeight * 0.25);
             document.querySelectorAll(
-                '#biografia h2, #biografia .bio-text, #audio-showcase h2, #audio-showcase > p, #audio-showcase .custom-audio-card, #legacy h2, #legacy > div > div'
+                '#biografia h2, #biografia .bio-text, #audio-showcase h2, #audio-showcase > p, #audio-showcase .custom-audio-card, #legacy h2, #legacy > div > div, #cv-fold h4, #cv-fold li, #cv-fold .streaming-links, #cv-fold .album-detail summary, #cv-fold .album-detail-content > *'
             ).forEach(function (element) {
                 const bounds = element.getBoundingClientRect();
                 const centerY = bounds.top + bounds.height / 2;
@@ -502,6 +506,13 @@
         }
 
         window.addEventListener('scroll', updateHeaderOnScroll, { passive: true });
+        window.addEventListener('resize', updateHeaderOnScroll);
+        const cvToggle = document.querySelector('.cv-toggle');
+        if (cvToggle) {
+            cvToggle.addEventListener('click', function () {
+                window.requestAnimationFrame(updateHeaderOnScroll);
+            });
+        }
         updateHeaderOnScroll();
     </script>
     <script src="script.js"></script>
