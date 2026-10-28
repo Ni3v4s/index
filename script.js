@@ -103,7 +103,7 @@
     document.addEventListener('click', function (e) {
         if (!soundEnabled) return;
         const target = e.target.closest('a, button, input[type="submit"], input[type="button"]');
-        if (!target || target.id === 'sound-toggle' || target.id === 'ambient-audio-toggle') return;
+        if (!target || target.closest('.custom-audio-controls') || target.id === 'sound-toggle' || target.id === 'ambient-audio-toggle') return;
         const sound = clickSounds[Math.floor(Math.random() * clickSounds.length)];
         sound.currentTime = 0;
         sound.play().catch(() => {}); // ignore autoplay policy errors
