@@ -2,7 +2,7 @@
 (function () {
     'use strict';
 
-    const ambientTrack = new Audio('https://raw.githubusercontent.com/Ni3v4s/index/main/asset/audio/%237%20Instante%20del%20Mundo_EmiliaRamunda-2026.mp3');
+    const ambientTrack = new Audio('asset/audio/%237%20Instante%20del%20Mundo_EmiliaRamunda-2026.mp3');
     ambientTrack.loop = true;
     ambientTrack.volume = 0.2;
     ambientTrack.preload = 'none';
