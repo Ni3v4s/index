@@ -9,14 +9,14 @@
     <meta name="description" content="Portfolio de Ruben Nievas: diseño sonoro, composición y gestión cultural desde Ushuaia, Tierra del Fuego. Escuchá obras, música y proyectos.">
     <meta name="author" content="Ruben Nievas">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://ni3v4s.github.io/">
+    <link rel="canonical" href="https://ni3v4s.github.io/index/">
 
     <!-- KEYWORDS MULTILINGÜES -->
     <meta name="keywords" content="Ruben Nievas, diseño sonoro, composición musical, gestión cultural, Ushuaia, Tierra del Fuego, sonido para teatro">
 
     <!-- OPEN GRAPH / LINKEDIN & FACEBOOK -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ni3v4s.github.io/">
+    <meta property="og:url" content="https://ni3v4s.github.io/index/">
     <meta property="og:title" content="Ruben Nievas — Diseño sonoro y gestión cultural">
     <meta property="og:description" content="Obras, música y proyectos de diseño sonoro y gestión cultural desde Ushuaia, Tierra del Fuego.">
     <meta property="og:locale" content="es_AR">
@@ -29,11 +29,11 @@
     <meta name="twitter:description" content="Obras, música y proyectos desde Ushuaia, Tierra del Fuego.">
 
     <!-- IDIOMA PRINCIPAL -->
-    <link rel="alternate" hreflang="es" href="https://ni3v4s.github.io/">
-    <link rel="alternate" hreflang="x-default" href="https://ni3v4s.github.io/">
+    <link rel="alternate" hreflang="es" href="https://ni3v4s.github.io/index/">
+    <link rel="alternate" hreflang="x-default" href="https://ni3v4s.github.io/index/">
 
     <!-- ESTILOS Y RECURSOS -->
-    <link rel="stylesheet" href="styles.css?v=20261031-b">
+    <link rel="stylesheet" href="styles.css?v=20261031-c">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎹</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -89,6 +89,13 @@
     </header>
 
     <main>
+        <nav class="page-index" aria-label="Índice de secciones">
+            <a href="#biografia" data-es="Biografía" data-en="Biography" data-fr="Biographie">Biografía</a>
+            <a href="#audio-showcase" data-es="Obras" data-en="Selected work" data-fr="Œuvres">Obras</a>
+            <a href="#discography" data-es="Discografía" data-en="Discography" data-fr="Discographie">Discografía</a>
+            <a href="#contact" data-es="Contacto" data-en="Contact" data-fr="Contact">Contacto</a>
+        </nav>
+
         <!-- BIOGRAFÍA / PERFIL -->
         <section id="biografia">
             <h2 data-aos="fade-right" data-es="BIOGRAFÍA / PERFIL" data-en="BIOGRAPHY / PROFILE" data-fr="BIOGRAPHIE / PROFIL">BIOGRAFÍA / PERFIL</h2>
@@ -128,7 +135,7 @@
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px;" data-aos="fade-up">
                 <div class="custom-audio-card" style="background: #0a0a0a; border: 1px solid #1a1a1a; border-left: 2px solid var(--accent); padding: 14px; border-radius: 4px;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                        <h3 style="font-size: 0.9rem; margin: 0; color: #eee; font-weight: 600;">Quarentine — Theater scene #1 · 2026</h3>
+                        <h3 style="font-size: 0.9rem; margin: 0; color: #eee; font-weight: 600;">Quarantine — Theater scene #1 · 2026</h3>
                         <span class="demo-tag">DEMO · SOUNDCLICK</span>
                     </div>
                     <p style="font-size: 0.75rem; color: #aaa; line-height: 1.4; margin-bottom: 12px; font-weight: 300;"
@@ -141,13 +148,13 @@
                     <div class="custom-audio-controls" style="display: flex; align-items: center; gap: 12px; background: #111; padding: 6px 10px; border-radius: 3px; border: 1px solid #222;">
                         <button type="button" aria-label="Reproducir audio" onclick="toggleCustomPlay(this)" style="background: var(--accent); border: none; width: 28px; height: 28px; border-radius: 50%; color: #000; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: bold;">▶</button>
                         <input type="range" class="audio-progress" aria-label="Progreso del audio" value="0" min="0" max="100" style="flex-grow: 1; width: 100%; height: 3px; accent-color: var(--accent); cursor: pointer; background: #222;" oninput="seekAudio(this)">
-                        <audio preload="none" data-preview-seconds="20" src="asset/audio/%231%20Theater%20scene.mp3" ontimeupdate="updateProgress(this)" onended="resetPlayer(this)"></audio>
+                        <audio preload="none" data-preview-seconds="20" src="asset/audio/theater-scene-1.mp3" ontimeupdate="updateProgress(this)" onended="resetPlayer(this)"></audio>
                     </div>
                 </div>
 
                 <div class="custom-audio-card" style="background: #0a0a0a; border: 1px solid #1a1a1a; border-left: 2px solid var(--accent); padding: 14px; border-radius: 4px;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                        <h3 style="font-size: 0.9rem; margin: 0; color: #eee; font-weight: 600;">Quarentine — #20 · 2020</h3>
+                        <h3 style="font-size: 0.9rem; margin: 0; color: #eee; font-weight: 600;">Quarantine — #20 · 2020</h3>
                         <span class="demo-tag">DEMO · SOUNDCLICK</span>
                     </div>
                     <p style="font-size: 0.75rem; color: #aaa; line-height: 1.4; margin-bottom: 12px; font-weight: 300;"
@@ -160,7 +167,7 @@
                     <div class="custom-audio-controls" style="display: flex; align-items: center; gap: 12px; background: #111; padding: 6px 10px; border-radius: 3px; border: 1px solid #222;">
                         <button type="button" aria-label="Reproducir audio" onclick="toggleCustomPlay(this)" style="background: var(--accent); border: none; width: 28px; height: 28px; border-radius: 50%; color: #000; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: bold;">▶</button>
                         <input type="range" class="audio-progress" aria-label="Progreso del audio" value="0" min="0" max="100" style="flex-grow: 1; width: 100%; height: 3px; accent-color: var(--accent); cursor: pointer; background: #222;" oninput="seekAudio(this)">
-                        <audio preload="none" data-preview-seconds="20" src="asset/audio/%232%20Theater%20scene.mp3" ontimeupdate="updateProgress(this)" onended="resetPlayer(this)"></audio>
+                        <audio preload="none" data-preview-seconds="20" src="asset/audio/theater-scene-20.mp3" ontimeupdate="updateProgress(this)" onended="resetPlayer(this)"></audio>
                     </div>
                 </div>
 
@@ -179,7 +186,7 @@
                     <div class="custom-audio-controls" style="display: flex; align-items: center; gap: 12px; background: #111; padding: 6px 10px; border-radius: 3px; border: 1px solid #222;">
                         <button type="button" aria-label="Reproducir audio" onclick="toggleCustomPlay(this)" style="background: var(--accent); border: none; width: 28px; height: 28px; border-radius: 50%; color: #000; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: bold;">▶</button>
                         <input type="range" class="audio-progress" aria-label="Progreso del audio" value="0" min="0" max="100" style="flex-grow: 1; width: 100%; height: 3px; accent-color: var(--accent); cursor: pointer; background: #222;" oninput="seekAudio(this)">
-                        <audio preload="none" src="asset/audio/%233%20Ori%CC%81genes.mp3" ontimeupdate="updateProgress(this)" onended="resetPlayer(this)"></audio>
+                        <audio preload="none" src="asset/audio/origenes.mp3" ontimeupdate="updateProgress(this)" onended="resetPlayer(this)"></audio>
                     </div>
                 </div>
 
@@ -198,7 +205,7 @@
                     <div class="custom-audio-controls" style="display: flex; align-items: center; gap: 12px; background: #111; padding: 6px 10px; border-radius: 3px; border: 1px solid #222;">
                         <button type="button" aria-label="Reproducir audio" onclick="toggleCustomPlay(this)" style="background: var(--cakewalk-red); border: none; width: 28px; height: 28px; border-radius: 50%; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.7rem;">▶</button>
                         <input type="range" class="audio-progress" aria-label="Progreso del audio" value="0" min="0" max="100" style="flex-grow: 1; width: 100%; height: 3px; accent-color: var(--cakewalk-red); cursor: pointer; background: #222;" oninput="seekAudio(this)">
-                        <audio preload="none" src="asset/audio/%234Field%20Recordings%20%C2%B7%20Sonido%20Directo%20%26%20Tratamiento%20Acu%CC%81stico.mp3" ontimeupdate="updateProgress(this)" onended="resetPlayer(this)"></audio>
+                        <audio preload="none" src="asset/audio/field-recordings.mp3" ontimeupdate="updateProgress(this)" onended="resetPlayer(this)"></audio>
                     </div>
                 </div>
 
@@ -217,7 +224,7 @@
                     <div class="custom-audio-controls" style="display: flex; align-items: center; gap: 12px; background: #111; padding: 6px 10px; border-radius: 3px; border: 1px solid #222;">
                         <button type="button" aria-label="Reproducir audio" onclick="toggleCustomPlay(this)" style="background: var(--accent); border: none; width: 28px; height: 28px; border-radius: 50%; color: #000; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: bold;">▶</button>
                         <input type="range" class="audio-progress" aria-label="Progreso del audio" value="0" min="0" max="100" style="flex-grow: 1; width: 100%; height: 3px; accent-color: var(--accent); cursor: pointer; background: #222;" oninput="seekAudio(this)">
-                        <audio preload="none" src="asset/audio/%235%20comedia_manuelita_daniel%20romano.mp3" ontimeupdate="updateProgress(this)" onended="resetPlayer(this)"></audio>
+                        <audio preload="none" src="asset/audio/manuelita.mp3" ontimeupdate="updateProgress(this)" onended="resetPlayer(this)"></audio>
                     </div>
                 </div>
 
@@ -236,9 +243,20 @@
                     <div class="custom-audio-controls" style="display: flex; align-items: center; gap: 12px; background: #111; padding: 6px 10px; border-radius: 3px; border: 1px solid #222;">
                         <button type="button" aria-label="Reproducir audio" onclick="toggleCustomPlay(this)" style="background: var(--accent); border: none; width: 28px; height: 28px; border-radius: 50%; color: #000; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: bold;">▶</button>
                         <input type="range" class="audio-progress" aria-label="Progreso del audio" value="0" min="0" max="100" style="flex-grow: 1; width: 100%; height: 3px; accent-color: var(--accent); cursor: pointer; background: #222;" oninput="seekAudio(this)">
-                        <audio preload="none" src="asset/audio/%236%20comedia_mi_caballito_arreglo-2027.mp3" ontimeupdate="updateProgress(this)" onended="resetPlayer(this)"></audio>
+                        <audio preload="none" src="asset/audio/mi-caballito.mp3" ontimeupdate="updateProgress(this)" onended="resetPlayer(this)"></audio>
                     </div>
                 </div>
+            </div>
+            <div class="spotify-embed showcase-spotify" data-aos="fade-up">
+                <p data-es="Escuchá el catálogo en Spotify" data-en="Listen to the catalog on Spotify" data-fr="Écoutez le catalogue sur Spotify">Escuchá el catálogo en Spotify</p>
+                <iframe
+                    title="Reproductor del perfil de Ruben Nievas en Spotify"
+                    src="https://open.spotify.com/embed/artist/4gftDU20natF8YOuUCCzZ5?utm_source=generator"
+                    width="100%"
+                    height="352"
+                    loading="lazy"
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+                </iframe>
             </div>
         </section>
 
@@ -323,17 +341,6 @@
                                 <a class="cv-link" href="https://music.apple.com/ar/artist/ruben-nievas/859693487?l=en-GB" target="_blank" rel="noopener noreferrer">Apple Music</a>
                                 <a class="cv-link" href="https://tidal.com/artist/5552263/u" target="_blank" rel="noopener noreferrer">Tidal</a>
                                 <a class="cv-link" href="https://open.spotify.com/artist/4gftDU20natF8YOuUCCzZ5?si=j-5wgzTVQNGaPeygLbGdaw" target="_blank" rel="noopener noreferrer">Spotify</a>
-                            </div>
-                            <div class="spotify-embed">
-                                <p data-es="Escuchá el catálogo en Spotify" data-en="Listen to the catalog on Spotify" data-fr="Écoutez le catalogue sur Spotify">Escuchá el catálogo en Spotify</p>
-                                <iframe
-                                    title="Reproductor del perfil de Ruben Nievas en Spotify"
-                                    src="https://open.spotify.com/embed/artist/4gftDU20natF8YOuUCCzZ5?utm_source=generator"
-                                    width="100%"
-                                    height="352"
-                                    loading="lazy"
-                                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-                                </iframe>
                             </div>
                             <details class="album-detail">
                                 <summary data-es="IMAGINARIO (2024) — FICHA TÉCNICA Y CONCEPTO" data-en="IMAGINARIO (2024) — TECHNICAL SHEET & CONCEPT" data-fr="IMAGINARIO (2024) — FICHE TECHNIQUE & CONCEPT">IMAGINARIO (2024) — FICHA TÉCNICA Y CONCEPTO</summary>
@@ -524,11 +531,13 @@
                         </div>
 
                         <div>
-                            <h4 data-es="Gestión &amp; Dirección" data-en="Management &amp; Direction" data-fr="Gestion &amp; direction" style="color: var(--cakewalk-red); text-transform: uppercase; font-size: 0.8rem; border-bottom: 1px solid #333; padding-bottom: 10px; letter-spacing: 2px;">Gestión &amp; Dirección</h4>
+                            <h4 data-es="Formación &amp; Trayectoria" data-en="Training &amp; Career" data-fr="Formation &amp; parcours" style="color: var(--cakewalk-red); text-transform: uppercase; font-size: 0.8rem; border-bottom: 1px solid #333; padding-bottom: 10px; letter-spacing: 2px;">Formación &amp; Trayectoria</h4>
                             <ul style="list-style: none; padding: 20px 0 0 0; font-size: 0.85rem; line-height: 1.8;">
-                                <li data-es="Banda Municipal: Director (2000-03) / Arreglista (1994)." data-en="Municipal Band: Director (2000-03) / Arranger (1994)." data-fr="Orchestre municipal : directeur (2000-03) / arrangeur (1994)."><strong>Banda Municipal:</strong> Director (2000-03) / Arreglista (1994).</li>
-                                <li data-es="Cultura Municipal: Director Interino (2008)." data-en="Municipal Cultural Affairs: Acting Director (2008)." data-fr="Direction municipale de la culture : directeur par intérim (2008)."><strong>Cultura Municipal:</strong> Director Interino (2008).</li>
-                                <li data-es="Diseño Sonoro: «Volver a Malvinas», obra «Orígenes»." data-en="Sound Design: “Volver a Malvinas,” the play “Orígenes.”" data-fr="Design sonore : « Volver a Malvinas », pièce « Orígenes »."><strong>Diseño Sonoro:</strong> "Volver a Malvinas", Obra "Orígenes".</li>
+                                <li data-es="Formación en arreglos para orquesta y Big Band con Jorge Calandrelli y F. Gelbard." data-en="Further study in orchestral and Big Band arranging with Jorge Calandrelli and F. Gelbard." data-fr="Formation complémentaire en arrangements pour orchestre et Big Band auprès de Jorge Calandrelli et F. Gelbard.">Formación en arreglos para orquesta y Big Band con Jorge Calandrelli y F. Gelbard.</li>
+                                <li data-es="Banda Municipal: arreglista (1994) y director (2000-03); Cultura Municipal: director interino (2008)." data-en="Municipal Band: arranger (1994) and director (2000-03); Municipal Cultural Affairs: acting director (2008)." data-fr="Orchestre municipal : arrangeur (1994) et directeur (2000-03) ; direction municipale de la culture : directeur par intérim (2008).">Banda Municipal: arreglista (1994) y director (2000-03); Cultura Municipal: director interino (2008).</li>
+                                <li data-es="Composición para teatro y documental; operación de sonido en vivo (FOH/MON)." data-en="Composition for theatre and documentary; live sound operation (FOH/MON)." data-fr="Composition pour le théâtre et le documentaire ; sonorisation en direct (FOH/MON).">Composición para teatro y documental; operación de sonido en vivo (FOH/MON).</li>
+                                <li data-es="Gestión cultural: Festival Nacional de la Noche más Larga, ciclos de verano y recuperación de archivos sonoros fueguinos." data-en="Cultural management: Ushuaia's National Longest Night Festival, summer concert series, and restoration of Tierra del Fuego sound archives." data-fr="Gestion culturelle : Festival national de la Nuit la plus longue, cycles estivaux et restauration d’archives sonores fuégiennes.">Gestión cultural: Festival Nacional de la Noche más Larga, ciclos de verano y recuperación de archivos sonoros fueguinos.</li>
+                                <li data-es="Presentaciones: Jazz al Fin, GALA Antártica y Casa de la Cultura del Fondo Nacional de las Artes, con Nievas Project." data-en="Performances: Jazz al Fin, GALA Antártica, and the National Arts Foundation's Casa de la Cultura with Nievas Project." data-fr="Scènes : Jazz al Fin, GALA Antártica et Casa de la Cultura du Fonds national des arts avec Nievas Project.">Presentaciones: Jazz al Fin, GALA Antártica y Casa de la Cultura del Fondo Nacional de las Artes, con Nievas Project.</li>
                             </ul>
                         </div>
 
@@ -736,7 +745,7 @@
             }, { once: true });
         }
 
-        document.querySelectorAll('.nav-links a[href="#discography"], .nav-links a[href="#technology"]').forEach(function (link) {
+        document.querySelectorAll('a[href="#discography"], .nav-links a[href="#technology"]').forEach(function (link) {
             link.addEventListener('click', function () {
                 if (location.hash === link.hash) openCvSection(link.hash.slice(1));
             });
@@ -752,6 +761,6 @@
 
         updateHeaderOnScroll();
     </script>
-    <script src="script.js?v=20261030-a"></script>
+    <script src="script.js?v=20261031-b"></script>
 </body>
 </html>

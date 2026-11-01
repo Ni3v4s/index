@@ -74,6 +74,32 @@ body {
     font-size: 0.85rem;
 }
 
+.page-index {
+    position: static;
+    mix-blend-mode: normal;
+    text-transform: none;
+    letter-spacing: normal;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 20px;
+    padding: 16px 5%;
+    background: var(--surface-dark);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.page-index a {
+    color: var(--text-muted);
+    font-size: 0.68rem;
+    letter-spacing: 0.7px;
+    text-decoration: none;
+}
+
+.page-index a:hover,
+.page-index a:focus-visible {
+    color: var(--accent);
+}
+
 /* Textura Fina de Ruido Digital */
 body::before {
     content: "";
@@ -815,6 +841,11 @@ section h2 {
 
 .spotify-embed {
     margin: 26px 0 34px;
+}
+
+.showcase-spotify {
+    max-width: 1180px;
+    margin: 32px auto 0;
 }
 
 .spotify-embed p {
